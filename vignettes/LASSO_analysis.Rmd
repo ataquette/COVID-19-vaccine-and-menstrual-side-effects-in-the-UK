@@ -228,7 +228,7 @@ cv.fit.lasso <-
 
 ```{r AUC}
 # get max AUC from the training set
-max(cv.fit.lasso$cvm)
+print(paste("Area under the curve:", round(max(cv.fit.lasso$cvm), digits = 2)))
 # plot AUC values for different lambdas
 plot(cv.fit.lasso)
 ```
@@ -251,6 +251,7 @@ pred <- predict(cv.fit.lasso,
 ```{r AUC2}
 # get AUC from test set
 auc.lasso <- auc(y_rep, pred)
+auc.lasso
 ```
 
 # Coefficients
