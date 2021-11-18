@@ -53,7 +53,7 @@ pacman::p_load(
 ```{r dataload}
 
 # list of 5 imputed datasets
-multfin<-import(here("data","data_covid19vaccine_menstrualcycles_uk_names.Rda")) # imputed list
+multfin<-import(here("data","data_covid19vaccine_menstrualcycles_uk_imputed.Rda")) # imputed list
 
 # original data used for imputation
 dataor<-import(here("data","data_covid19vaccine_menstrualcycles_uk_original.Rda")) # original dataset of vaccinated people
