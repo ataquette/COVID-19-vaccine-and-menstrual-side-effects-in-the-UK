@@ -1,0 +1,6 @@
+"0","library(rio)
+"
+"2","package ‘rio’ was built under R version 4.0.5"
+"2","The following rio suggested packages are not installed: ‘arrow’, ‘feather’, ‘fst’, ‘hexView’, ‘pzfx’, ‘readODS’, ‘rmatio’
+Use 'install_formats()' to install them
+"

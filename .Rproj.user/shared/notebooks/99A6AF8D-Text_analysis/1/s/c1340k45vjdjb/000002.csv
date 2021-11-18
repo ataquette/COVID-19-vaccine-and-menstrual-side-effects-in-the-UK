@@ -1,0 +1,1180 @@
+"0","#Data frame is df_clean"
+"0",""
+"0","# Check text for potential issues"
+"0","check_text(df_clean$vaccine_changescycle_othertxt)"
+"2","7: Severe and sharp breast pain on one side I think linked to cycle which I<89><db><aa>ve never had before. Usually it<89><db><aa>s slight tenderness
+12: It<89><db><aa>s been irregular before so basically hadn<89><db><aa>t had a proper period in a while.
+23: Cycles seem much shorter but aren<89><db><aa>t actually much shorter
+48: I haven<89><db><aa>t had one since the vaccine.
+75: I take the pill with out brakes so don<89><db><aa>t know
+84: Haven<89><db><aa>t had period yet should be end of month
+85: Haven<89><db><aa>t had a period since the jab, which was only 4 days ago
+99: Only got vaccinated yesterday so it<89><db><aa>s too early to say
+100: I haven<89><db><aa>t had a period since my first vaccination
+106: Spotting in between periods which hasn<89><db><aa>t happened in years
+109: I got the vaccine yesterday and I<89><db><aa>m due to start my period this week so can<89><db><aa>t say for now
+114: I had the injection a few days after I started my last period, so it<89><db><aa>s too soon to tell
+116: I<89><db><aa>ve not thought about it until now...but I have noticed hair loss, my last period was extremely heavy, really bad small skin bump acne which I<89><db><aa>d never had and I was low in mood. But, I just thought some of the mental health effects were mainly due to the pandemic overall.
+128: Can<89><db><aa>t tell, it hasn<89><db><aa>t been long enough since I had the jabs.
+142: Only 2 periods but both 32/33 day cycles which is <89><db><cf>more regular<89><db><9d> than recently.
+167: I just got vaccinated a week ago so I couldn<89><db><aa>t observe any changes
+183: I<89><db><aa>ve not yet received today<89><db><aa>s date 19/03/2021 and receiving on 28/03/2021 and currently on period so have to wait next month (April) to find out
+200: My last period, post vaccine, was heavier and I had a lot more stomach cramps. It lasted half a day longer than usual - it<89><db><aa>s normally 4 days - and my PMS was awful. I was anxious, teary and very lethargic.
+201: it<89><db><aa>s only been a couple of weeks since I had the vaccine so I haven<89><db><aa>t had a full cycle to judge ify cycle has been disrupted
+208: It<89><db><aa>s only been 28 days since my vaccine and I think my most recent period was early by several days
+225: I<89><db><aa>ve not had my period yet
+226: I<89><db><aa>ve not had a period yet
+255: Potentially a change to luteal phase as I<89><db><aa>ve only started tracking ovulation since vaccine.
+257: Think it<89><db><aa>s too soon to say. I was slightly <89><db><f7>late<89><db><aa> this months compared to the last few months
+276: Haven<89><db><aa>t had a period yet after vaccine. Next one should be April 12.
+278: Haven<89><db><aa>t had period since yet
+283: I<89><db><aa>ve not had a period since
+284: My period was five days late (which is usual for me after receiving a vaccination; it also happens with flu jabs) but as I<89><db><aa>ve only had one period it seems too soon to say whether or not there<89><db><aa>s overall disruption.
+298: I<89><db><aa>ve just had one since (I<89><db><aa>m currently on my period). It<89><db><aa>s the same, but just came later than usual. Hasn<89><db><aa>t been long enough to see if it<89><db><aa>s disrupted or not.
+302: I haven<89><db><aa>t had a period since my vaccination.
+310: Haven<89><db><aa>t had a period yet since vaccination (not due for another 3 weeks)
+314: Have only just been vaccinated and haven<89><db><aa>t had a period yet
+317: My period is much heavier and I<89><db><aa>m experiencing amplified symptoms i.e cramps, back pain, headaches, interrupted sleep
+318: I<89><db><aa>m unsure because I only had it a week ago but I think my period may be one day late as of right now
+320: I got my first shot just after my last period, so I have not had another period yet. However I haven<89><db><aa>t noticed any changes in relation to my cycle.
+326: It hasn<89><db><aa>t been long enough to say
+347: It<89><db><aa>s been about a month after, so tough to say. I feel like I am about to get my period though
+364: Haven<89><db><aa>t had one yet
+377: I had a miscarriage. I did not know I was pregnant and get the vaccine when I was 4 weeks pregnant. I found out a week later but miscarried at 7 weeks although scans show the pregnancy did not develop after 4 weeks. I do not believe that it<89><db><aa>s related to the vaccine although I can<89><db><aa>t rule it out.
+391: Can<89><db><aa>t be sure yet, it<89><db><aa>s only been a few weeks
+394: I haven<89><db><aa>t been due once since.  Only vaccinated 26th March
+400: Early <89><db><cf>period<89><db><9d> after jab by 3 days or possible early miscarriage (Chem pregnancy)
+408: NA
+448: I haven<89><db><aa>t had a period yet
+466: Not had one yet since vaccine so can<89><db><aa>t comment
+473: I hadn<89><db><aa>t had a period for two year and had a small bleed a week after my first vaccine.
+484: Haven<89><db><aa>t been a long enough time after the vaccine to determine, however, I am bleeding between period now in March (I got the vaccine mid feb just before my feb period) so may be related but it<89><db><aa>s too soon to tell
+486: Can<89><db><aa>t say yet
+488: I<89><db><aa>ve not had a period since my vaccine
+490: hasn<89><db><aa>t been long enough to know
+497: More clots and cramps than usual but I don<89><db><aa>t suspect that<89><db><aa>s related to the vaccine?
+507: Only recently had the vaccine so it<89><db><aa>s too early to tell
+516: Period late, but I<89><db><aa>m 52 so I<89><db><aa>m expecting them to stop soon anyway
+517: It is too early to tell. My Cooke was taken out on the same day as I had my jab. I had my period that day and haven<89><db><aa>t stopped bleeding yet.
+525: I don<89><db><aa>t really know yet
+540: It<89><db><aa>s not been long enough to check - I need to keep monitoring
+542: I<89><db><aa>m due my first period anytime now which will be the first one since the vaccine.
+543: Haven<89><db><aa>t had one since
+547: I<89><db><aa>ve not had a period yet since vaccination as I<89><db><aa>m not due yet
+556: I haven<89><db><aa>t had a period yet after receiving the vaccine .
+577: Don<89><db><aa>t know
+582: I took a period after the vaccine, I hadn<89><db><aa>t had one in months beforehand.
+589: Can<89><db><aa>t answer - jab this week
+594: I started a period, 2 days after vaccine,  which wasn<89><db><aa>t due for another 2 weeks
+595: Since my 1st shot in Dec, my cycle has been at its longest but I didn<89><db><aa>t feel this was secondary to my injections. I just thought it was my period continuing on this increasing pattern.
+602: Haven<89><db><aa>t bleed since my vaccine
+604: '+ menopause symptoms that I didn<89><db><aa>t previously have!
+609: I had a period hadn<89><db><aa>t had one since last August 2020
+613: My period had started two days prior to my first immunisation, but I didn<89><db><aa>t notice any difference other than it was heavier than the previous month, but my periods severity have been fluctuating recently.
+639: I<89><db><aa>ve had a coil fitted within the last 6 weeks so everything is changed.
+"
+"1","
+=============
+NON CHARACTER
+=============
+
+  --IS CHARACTER--
+
+
+==========================
+MISSING ENDING PUNCTUATION
+==========================
+
+The following observations were missing ending punctuation:
+
+1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 20, 21, 22, 23, 25, 28, 29, 30, 31, 32, 33, 35, 37, 38, 41, 42, 43, 45, 47, 49, 50, 51, 53, 55, 56, 58, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90, 92, 93, 94, 96, 97, 99, 100, 102, 103, 104, 105, 106, 107, 108, 109, 110, 112, 113, 114, 115, 117, 118, 119, 121, 122, 124, 125, 126, 127, 131, 133, 134, 135, 137, 138, 139, 141, 144, 146, 147, 148, 149, 151, 152, 153, 154, 155, 157, 158, 160, 161, 162, 163, 164, 165, 167, 168, 172, 174, 175, 177, 178, 179, 180, 181, 182, 183, 184, 187, 189, 191, 192, 193, 194, 195, 196, 197, 201, 203, 204, 205, 207, 208, 209, 210, 211, 213, 214, 216, 217, 220, 221, 223, 224, 225, 226, 227, 228, 229, 230, 232, 234, 235, 236, 237, 238, 239, 241, 242, 243, 244, 245, 250, 251, 253, 254, 257, 258, 260, 261, 262, 263, 265, 266, 267, 268, 270, 272, 273, 274, 275, 277, 278, 280, 281, 282, 283, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 297, 299, 300, 301, 303, 304, 305, 306, 308, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 333, 334, 335, 338, 339, 340, 341, 342, 343, 344, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 370, 371, 373, 374, 378, 381, 384, 386, 388, 389, 391, 392, 393, 394, 395, 397, 398, 399, 400, 402, 404, 406, 409, 412, 413, 414, 415, 416, 417, 419, 423, 424, 425, 426, 428, 429, 430, 432, 435, 436, 437, 439, 440, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 456, 457, 458, 459, 461, 463, 464, 466, 467, 468, 469, 470, 472, 474, 475, 476, 478, 479, 480, 481, 482, 484, 485, 486, 487, 488, 490, 495, 496, 499, 500, 501, 502, 503, 504, 506, 507, 508, 509, 513, 514, 515, 516, 518, 520, 521, 522, 523, 524, 525, 526, 527, 528, 531, 532, 533, 534, 535, 536, 538, 539, 540, 541, 543, 544, 545, 546, 547, 550, 551, 553, 557, 558, 560, 561, 563, 564, 565, 566, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 580, 583, 584, 585, 586, 587, 589, 590, 591, 592, 593, 594, 596, 601, 602, 603, 605, 606, 607, 608, 609, 610, 611, 612, 618, 619, 620, 621, 624, 625, 626, 627, 628, 629, 631, 632, 633, 634, 635, 636, 637, 638, 640, 641, 642, 644, 645, 646, 648, 649, 650, 651
+
+The following text is missing ending punctuation:
+
+1: I have only had one period since and it was 5 days late
+3: I stopped taking the combined pill around the same time so my period was disrupted likely because of this
+4: Nexplanon implant removed in Nov 2020 and periods shorter now (5 days) and beginning to bleed once a month
+5: Too soon to know
+6: N/a
+7: Severe and sharp breast pain on one side I think linked to cycle which I‰Ûªve never had before. Usually it‰Ûªs slight tenderness
+8: The vaccination was yesterday, it's a little too soon to tell
+9: vaccinated 23rd feb 2021 too early to say if theres been an impact
+10: Not had a period yet
+11: Too early to say
+14: Too early to say
+15: To recent to comment
+16: Not had my period yet
+20: Waiting to come on in the next few days
+21: I've only had one, too soon to say
+22: Missed February 2021 only so far
+23: Cycles seem much shorter but aren‰Ûªt actually much shorter
+25: IUS insitu irregular periods
+28: It was only 8 days ago and my period started 3 days ago so it's difficult to know
+29: I haven't had a period since as it isn't due yet
+30: I haven't been due my period since the vaccination
+31: Not applicable, was only vaccinated 2 days ago
+32: No, but only had one full cycle since the jab
+33: Not had one since vaccine. Due in a couple of days
+35: Not sure if related (and never thought about it until now, but this month for first time ever I felt faint whilst shopping and then lacked energy on my morning walk and then spent most of the day dozing in bed on the first day of my period
+37: Too soon to tell
+38: one normal period but caught COVID at the same time
+41: Nothing yet
+42: Menstrual cycle has slowed to a stop in the last month
+43: My jab was two days ago so I cannot say
+45: Only had one since vaccine
+47: Currently taking the POP contraceptive so my periods have ceased
+49: I noticed that when my cycles should have been stopping it got more heavier with clots bigger than I usually have at that time of the cycle I had cramps and nausea and I am definitely not pregnant
+50: too early to say
+51: It has only been 2 weeks since my vaccine so cannot say
+53: Too short a time period to notice any effect
+55: Too soon to tell
+56: Too early to tell either way
+58: This period is late by 17 days
+61: Not menstruating
+62: Havnt had one yet
+63: I've had my first period in about 3 months
+64: I haven't had a period since my 2nd vaccine
+65: Had the vaccine on Thursday, was feeling ill in bed all day on Friday with body aches including tummy aches. On Saturday woke up with spotting which continued on Sunday (today) not sure if it will turn into a period as they are so irregular. It has been 38 days since the first day of my last period
+66: Only one period since then, it was 2 days late, probably due to experiencing a day of side effects
+67: Too recent to know
+68: Have not had this months  yet  but is slightly overdue
+69: I have become pregnant
+70: Not had a period since
+71: Most recent cycle was nearly a week early
+72: Too soon to tell
+74: My first period after the vaccine has been completely different to any in the previous 12 months
+75: I take the pill with out brakes so don‰Ûªt know
+76: Bleed for longer but much lighter
+78: I only received my first dose of the vaccine yesterday! :)
+79: Too recent to say
+80: Constant right side ovary pain from 19th January
+81: Still bleeding continuously
+82: Not had one yet
+83: After Oxford vaccine later in the night started to menstral cycle even though not due for well over 2 weeks by average as was only on day 20 of cycle and I average at 36 days
+84: Haven‰Ûªt had period yet should be end of month
+85: Haven‰Ûªt had a period since the jab, which was only 4 days ago
+86: Only just had it and still recovering from a miscarriage so not noticed anything
+88: Too recent to tell
+89: No cycle as on HRT
+90: Duration of period after 1st cycle was lighter
+92: Not had a cycle yet
+93: Not menstruating
+94: One day late on cycle
+96: Too early to say, it was only 10 days ago
+97: Too soon to say really
+99: Only got vaccinated yesterday so it‰Ûªs too early to say
+100: I haven‰Ûªt had a period since my first vaccination
+102: I only had it today so not sure
+103: More painful cramps
+104: Too soon to answer
+105: Only had one period since, but my uterus has felt more crampy/fluttery
+106: Spotting in between periods which hasn‰Ûªt happened in years
+107: Too early to tell
+108: Missed period after jab
+109: I got the vaccine yesterday and I‰Ûªm due to start my period this week so can‰Ûªt say for now
+110: I haven't had a period yet since having my vaccine. It is due at the end of March
+112: Too soon to tell (had the vaccine 2 days ago)
+113: Started spotting shortly after vaccine
+114: I had the injection a few days after I started my last period, so it‰Ûªs too soon to tell
+115: Bled while on continuous combined contraceptive
+117: Too soon to tell
+118: Haven't had a period yet since my vaccine
+119: Excessive clottting in blood
+121: Not long enough since injection to know
+122: I Only got vaccinated yesterday
+124: I only got vaccinated 2 weeks ago so no changes as yet
+125: Too early to tell
+126: Not had a period yet
+127: I'm yet to have my monthly bleed following my vaccine
+131: Coil removed due to bleeding menstruated cycle started approx Nov 2020
+133: Too soon to tell
+134: Too soon to tell
+135: My period isn't due yet so we'll find out
+137: my period started the next week
+138: I have not had a period since before my positive Covid test in December 2020
+139: Not had period since jab as finished day I had jab
+141: cycle
+144: Too soon to tell
+146: I've not had any due to being on the implant since about May last year
+147: I have had what felt could have been a very heavy period with severe menstrual cramps, acne and fatigue but only a very light spotting
+148: Delayed for couple of days
+149: Heavier flow and not arriving on time. Period usually starts on the 1st. After the jab it was late by 14 days
+151: I think I may have bleed more since having vaccines
+152: Only just started my period after having it so cannot answer this question fairly
+153: Not due period for a time since vaccination
+154: Too soon from vaccination for period
+155: I've had 2 bouts of spotting and also period is late and also more cramping
+157: Too soon to know
+158: Too soon to tell
+160: Haven't had a new cycle since the vaccine
+161: Unsure
+162: Heavier and more cramping, more fatigue
+163: Not had a cycle since vaccination
+164: Days between cycle have reduced
+165: Waiting for bleeding now
+167: I just got vaccinated a week ago so I couldn‰Ûªt observe any changes
+168: Have had my first period in 6 months after vaccination
+172: Cramps were worse this month
+174: My 1st period following having had the vaccine is not yet due
+175: Too early
+177: I only had it yesterday so too soon to say
+178: Have not had since as not yet due
+179: Too early to tell as my periods are very irregular anyway
+180: My period started again
+181: I've not had one but I was already overdue by the time I had my vaccine by a week or two so not sure if it's related
+182: My period started 3 days early
+183: I‰Ûªve not yet received today‰Ûªs date 19/03/2021 and receiving on 28/03/2021 and currently on period so have to wait next month (April) to find out
+184: Only spotted for 1 day after having oxford vaccine
+187: Haven't had a period since the birth of baby
+189: I have not had a period since having the vaccine. I don't think this is related in any way as I have PCOS and have had long delays between periods before
+191: Only just received vaccine and not due a period yet so cannot comment
+192: Not had a menstrual cycle or bled since having the vaccine yet
+193: Not sure as only had two periods since vaccine was given
+194: not applicable
+195: Spotting mid cycle with mild cramps
+196: I have only had one cycle since vaccine
+197: Vaccinated 3 days ago so don't know
+201: it‰Ûªs only been a couple of weeks since I had the vaccine so I haven‰Ûªt had a full cycle to judge ify cycle has been disrupted
+203: Too soon to notice
+204: Miscarriage
+205: Unsure at present time
+207: and
+208: It‰Ûªs only been 28 days since my vaccine and I think my most recent period was early by several days
+209: My periods have become irregular again
+210: Not enough time since jab to know
+211: More big clots
+213: Later, can't predict which day I'll come on anymore
+214: Too early to tell as vaccine today but due on
+216: I was a little later than expected starting my next period. But the pop I am on makes them a little irregular anyway so may be usual for me
+217: Too soon, I am due to have a period this week
+220: Increased ovulation pain
+221: Have not menstruated since being vaccinated yet
+223: Not had one yet as due shortly
+224: Too soon to tell
+225: I‰Ûªve not had my period yet
+226: I‰Ûªve not had a period yet
+227: Only got the vaccine yesterday
+228: More prolonged and frequent bleeding but have recently received hormonal coil also
+229: Not had period as yet
+230: Haven't had a period for about 4 months before anyway
+232: I have had a much longer cycle this month
+234: Hot flushes returned after vaccine they had stopped for 6 months
+235: I've yet to have a period
+236: Too soon to tell period started day of vaccine
+237: Only just had vaccine and period started 2 days later
+238: Too soon to tell
+239: Not had a period yet since jab
+241: I was menstruating when I got my vaccine (this week)
+242: I have stopped hormonal birth control since receiving my first vaccine dose
+243: Too soon to say
+244: No
+245: I have not had a period since I was vaccinated however I did get a new implant shortly before vaccination
+250: No but I'm only a few weeks post vaccination
+251: Yes my period is late this month
+253: More clots
+254: I was vaccinated two days before starting my period and have not yet seen any changes
+257: Think it‰Ûªs too soon to say. I was slightly ‰Û÷late‰Ûª this months compared to the last few months
+258: Only just had jab on the Saturday 19th
+260: Too early to say
+261: Had a very heavy period following vaccination that was 2 weeks early
+262: Menstrual cycle started after 9 months
+263: Just had the jag
+265: I no longer have a cycle as described earlier
+266: Too early to tell
+267: Too early to say as periods were irregular at times before Covid
+268: No period since December
+270: I had implant fitted just before vaccination and lighter longer periods
+272: I had my period 2 weeks late
+273: My last period was jan 2021
+274: Was not menstruating beforehand
+275: To early to say
+277: Clots
+278: Haven‰Ûªt had period since yet
+280: My last period was only a week before my vaccination
+281: Too early to really comment
+282: Period started 2-3 days after vaccination
+283: I‰Ûªve not had a period since
+285: Literally got it this morning (23/03/2021)
+286: Not had a period
+287: The day after my jab I had my period after only 2 and half weeks and it lasted 10days
+288: Not sure just had the vaccine
+289: Too soon to say
+290: Slightly longer/heavier maybe
+291: Yes, slightly shorter
+292: Not had one yet since
+293: No period
+294: To short of a time period to comment
+295: Too soon to tell
+297: I started the combined pill in February for the first time so my cycle has changed because of that. I couldn't say if there have been any changes because of the Covid vaccine
+299: I've had one menstrual cycle since
+300: Only had the vaccine 2 days ago
+301: Dont get yet my period
+303: Too irregular due to breastfeeding to answer
+304: No period since my vaccination
+305: To early to tell, was starting new cycle day of shot
+306: I only had the vaccine 1 days ago and my period started two days after making me a week early
+308: Waiting for period since vaccine given mid cycle
+310: Haven‰Ûªt had a period yet since vaccination (not due for another 3 weeks)
+311: Not sure as I havent had a period since my covid vaccine which was around 3 weeks ago now but my cycles are very irregular anyway
+312: Too soon to say
+313: Completely stopped
+314: Have only just been vaccinated and haven‰Ûªt had a period yet
+315: Period began 2 days after receiving vaccine do not know if it is related
+316: I only received it a few days ago so haven't had time to notice
+317: My period is much heavier and I‰Ûªm experiencing amplified symptoms i.e cramps, back pain, headaches, interrupted sleep
+318: I‰Ûªm unsure because I only had it a week ago but I think my period may be one day late as of right now
+319: Longer to start after vaccine
+321: Cant say yet
+322: Unsure I had the vaccine less than a week ago
+323: Was on my period day five had vaccine stopped it and still waiting to this months to start
+324: I am due to start my 1st menstrual cycle since being vaccinated this week,
+325: First period after vaccination 5 days longer than normal -but always very regular
+326: It hasn‰Ûªt been long enough to say
+327: Shorter Bleeding
+328: Negative
+329: Not enough data
+331: Too early to tell
+333: Was only vaccinated 2 days ago
+334: To soon to say
+335: Only vaccinated yesterday
+338: Not had one yet
+339: Too recently vaccinated to tell (next week)
+340: Disturbance to my menstural cycle started before I had my first jab
+341: Have not yet had a period since the vaccine
+342: My period after the vaccine was a lot later than usual. I was 5/6 days late and i am rarely that late
+343: It's been delayed
+344: Too soon to notice any change
+346: Vaccine too recent to see effect
+347: It‰Ûªs been about a month after, so tough to say. I feel like I am about to get my period though
+348: My continuous periods have stopped, however I have been on new medication since January to place me in a medically induced menopause
+349: It has not been long enough to know yet
+350: Too soon to tell
+351: Period was shorter this month
+352: Only vaccinated two days
+353: Am irregular anyway and is too soon to say
+354: A very short light period
+355: Yes but got mirena coil a week later so most likely to be that
+356: 2 bleeds with a short break
+357: My Period started the day after I had my vaccine which was 10 days early
+358: To early to tell. Although it was 35 days since last period which is substantially longer than normal
+359: Only been 1 week. Too early to tell
+360: Started contraceptive pill around similar time so hard to tell
+361: Only had it 3 days ago
+362: As starred earlier, I am 56 and I think I am pretty much done (last bleed/spotting Aug 2020)
+363: Shorter time between cycles I was regular 28 day cycle now can be 24 days
+364: Haven‰Ûªt had one yet
+365: I have not yet had a cycle since the vaccine
+366: Only one weird breakthrough period none since
+367: Hard to say, my cycle was already disrupted
+368: Long time between cycles since jan boobs sorer for a lot longer
+370: Latest period has lasted 28 days when normally only last 7 days
+371: Too early to say
+373: Period is late when it is normally like clockwork  even to within 2 hours
+374: Only just had the vaccine so too soon to tell
+378: My last bleed was vastly different. It was barely more than spotting
+381: Not enough time to have had a period yet
+384: Just had the vaccine
+386: My first cycle after the vaccine was 6 days late, and lighter than usual
+388: It was only 2 days ago
+389: Vaccine was only 2 days ago (on the last day of my last period)
+391: Can‰Ûªt be sure yet, it‰Ûªs only been a few weeks
+392: About to have my 1st post-vaccine period
+393: they just took so long to arrive
+394: I haven‰Ûªt been due once since.  Only vaccinated 26th March
+395: Difficult to say because I had coil fitted and periods have just stopped over last two months
+397: Not overall but I did miss my period for the February month and now my period has resumed during the end of March
+398: I started the POP around the same time as my first vaccine
+399: Too early to say -got my vaccine 6 days before my most recent period
+400: Early ‰ÛÏperiod‰Û after jab by 3 days or possible early miscarriage (Chem pregnancy)
+402: Too soon to say
+404: Menstrual cycles seem to have pretty much stopped - spotting only now when my period would be due
+406: Too early to say
+409: No period after vaccine but I assumed it was unrelated and linked to pcos
+412: Only had the vaccination on 26/03 and period started today 28/03
+413: Too soon to say
+414: Had my 1st shot on 25th March, and I was late by 5 days
+415: It's not been long enough to judge
+416: I started taking pill in January due to concerns of falling pregnant whilst inbetween vaccination
+417: I missed my January period, and they have not yet restarted
+419: Too soon to tell
+423: Not due yet so cannot comment
+424: Only given yesterday
+425: Too soon to tell
+426: I had a mirena coil inserted so my periods seem to have stopped
+428: Spotting 2 days after injection
+429: Very heavy bleeding after the first vaccine. All periods heavier since
+430: I have yet to have a period as I was vaccinated very recently
+432: I missed a period while I had Covid symptoms. Also missed period straight after 1st dose of injection.  Not yet due period following 2nd injection
+435: Too early to tell
+436: i have also taken the morning after pill in that period and it may have disrupted my cycle
+437: I've only just had it, so cannot tell yet
+439: Too early to tell
+440: More pain in breast
+442: Im aware my cycle has been disrupted by the implant so couldn't say if it was since having the vaccine
+443: Too soon to tell
+444: I cant be sure, I have only had one period since first vaccination dose
+445: More larger clots
+446: I was about a week late coming into my period after having the vaccine. Prior to having it I have never been late before
+447: My long Covid symptoms have significantly improved- whole days without fatigue and some (few) with no symptoms at all
+448: I haven‰Ûªt had a period yet
+449: Only had the jab 24hrs ago so too early to tell
+450: The bleeding I experienced was somewhat heavier
+451: Had one just after being vaccinated but can not say if they are more or less disrupted un till next one happens which should be at beginning of april
+452: My cycle is so irregular it's hard to tell - I haven't had a period since my first Jab
+453: Only one cycle so far
+454: I haven't had one since (due this week), so can't report if any changes will occur
+456: Had period after not having one for months
+457: Period have been between 28 and 32 days, and this month was 41 days
+458: Few and far between
+459: Not sure as since Covid not sure had a proper cycle
+461: It has only been one month, but my period came 2 weeks early the time after I had my first shot
+463: Its only been a week, not due a period yet
+464: I got a period for the first time in 5 months that lasted 5 days and was similar to spotting (not much on a pad/ tampon but enough to warrant wearing one)
+466: Not had one yet since vaccine so can‰Ûªt comment
+467: I only had the vaccine today so unable to comment about this yet
+468: It was only a week ago
+469: Not reached next expected period since first dose
+470: Continued to be less regular but have only had two periods since my first jab so too soon to see any trends
+472: Said no but only vaccinated a day
+474: I have had 2 small periods since my vaccine even though I have a coil and they had stopped for about a year
+475: Started zolodex injections around the same time
+476: Not yet as I had my vaccine after my last period
+478: Difficult to say as had covid before the vaccine
+479: My periods have been very light
+480: Have had a long cycle since vaccine
+481: Only received 2nd vaccination last week
+482: Not sure yet as i have not started my period so possibly a little late
+484: Haven‰Ûªt been a long enough time after the vaccine to determine, however, I am bleeding between period now in March (I got the vaccine mid feb just before my feb period) so may be related but it‰Ûªs too soon to tell
+485: I started bleeding a few days after having the covid vaccine even though I had a week left of taking the pill
+486: Can‰Ûªt say yet
+487: Not due period yet since vaccination
+488: I‰Ûªve not had a period since my vaccine
+490: hasn‰Ûªt been long enough to know
+495: Not menstruated since my vaccine yet
+496: This one came early, day after injection 3 days early
+499: I have not had enough to judge
+500: I wouldn't know, they are too irregular
+501: Patchy period very strange
+502: Too early to tell
+503: Now come a few days earlier
+504: Too early to say
+506: Spotting with ovulation
+507: Only recently had the vaccine so it‰Ûªs too early to tell
+508: Not known yet
+509: No bleed since August 2020
+513: Hard to tell as I had IUD fitted in Dec 2020
+514: I have not had my period yet after vaccine
+515: This month's period was the heaviest and most painful I've had in a long time
+516: Period late, but I‰Ûªm 52 so I‰Ûªm expecting them to stop soon anyway
+518: Not sure as been irregular in last year so not sure when it's coming
+520: No period
+521: Not had one yet
+522: This is my first period since last year so I'm not really sure except I'm more moody and hungry with this one
+523: Still waiting to see
+524: Not had vaccine long enough to say
+525: I don‰Ûªt really know yet
+526: I started to menstruated following my vaccination
+527: No more spotting, no periods due to mini pill
+528: Too soon to tell
+531: Not sure if the vaccine or Covid positive has changed my periods
+532: My period was due this week but I am not reading too much into this, as I have missed periods before
+533: Too soon to say
+534: Had a bleed directly after vaccination where I had not had one for a year
+535: Unsure - I had my second vaccine this week and my period is now 2 days late however my periods are not that regular so I have to work on an average cycle length to predict my periods so it is not always accurate, and currently on nightshifts and this can also effect my menstrual cycle too. So could be for a number of reasons
+536: My last period was prior to the vaccine, so I don't know if anything has changed as my periods are irregular
+538: Only had injection 1 week ago so not due to have a period yet
+539: Heavy bleeding
+540: It‰Ûªs not been long enough to check - I need to keep monitoring
+541: Period Started 10 days earlier
+543: Haven‰Ûªt had one since
+544: Spotted between March and April cycle, approx cycle began a week early, April cycle much lighter than normal (yay!)
+545: No, but my cycle and contraceptive have changed since then
+546: Only had the vaccine yesterday, too early to tell
+547: I‰Ûªve not had a period yet since vaccination as I‰Ûªm not due yet
+550: Way too soon to tell
+551: I had the vaccination and then 2 weeks later I had a hysterectomy. I had one period between vaccination and hysterectomy - which seemed normal ish
+553: Not had a period since having vaccine
+557: I have had pre period spotting for the 2 periods after the first jab extending my period length to 8 days
+558: I had a period 20 days after my first vaccination in January and then nothing since then
+560: Possibly too early to know
+561: It hasn't been long enough to tell a difference
+563: Much lighter
+564: I've had spotting from 2 days after my jab
+565: Not enough time to tell
+566: Too early to say
+568: Longer time between periods
+569: Yes, I had an 18 day cycle but this was my first full cycle since miscarriage Dec 2020
+570: I've not had a period since starting the pill in December
+571: Had hysterectomy in September
+572: Recently vaccinated
+573: I had my vaccination today therefore too soon to tell
+574: I bled from the day after the jab for 5 weeks
+575: Too soon to tell
+576: Too soon to tell
+577: Don‰Ûªt know
+580: I had a period, first since July last year
+583: Longer bleeding
+584: Had vaccine today
+585: My period was late
+586: Only had the vaccine two days ago
+587: I only got it 2 days ago
+589: Can‰Ûªt answer - jab this week
+590: Not had a cycle yet since my vacation
+591: Got unexpected period 2 days after the shot
+592: Only vaccinated on 17th March
+593: Not had a period since my Covid vaccination which was very recently
+594: I started a period, 2 days after vaccine,  which wasn‰Ûªt due for another 2 weeks
+596: Have used back to back contraceptive pill packets so haven't had a period yet
+601: Less energy
+602: Haven‰Ûªt bleed since my vaccine
+603: Not had a period but becoming more infrequent due to onset of menopause
+605: Only had one period since vaccine but bled longer and heavier than usual
+606: Likely menopausal
+607: I only had 1 or 2 periods in total last year.  So far this year I have had 3
+608: Started the day after my jab, the following one came 2 days sooner than expected even on my short cycle
+609: I had a period hadn‰Ûªt had one since last August 2020
+610: I had my vaccine and that night I had my normal stomach pain and legs aching then I had a period again. It had only been two week since my last one
+611: I havent had a period since having first vaccine
+612: I had a period  after it
+618: Pain did feel more intense
+619: My last period started the day after I had my jab. However, this cycle has been a bit odd. I usually predict my periods through tracking my cervical mucus as a marker of ovulation. I had unexpected spotting at the time I expected to ovulate and am only now getting some mucus which leads me to believe my period will be later than I would usually expect
+620: Too soon to tell
+621: Not yet applicable
+624: My cycle was 32 days
+625: It's too soon to say
+626: I have not had a full cycle since having the vaccine
+627: Have only just had injection 3 days ago and period is due tomorrow so I haven't had chance to see if it has changed
+628: I have not come on my period
+629: Too soon to answer
+631: Too early to state
+632: Too soon to tell (one week since vaccination one week until period pre period symptoms feel same as before vaccine/same as throughout lockdown/more abdominal pain and bloating since lockdown started)
+633: Not had period yet since vaccine but am due any day now
+634: Minimal bleed / no bleed
+635: Too soon to tell
+636: Fluctuation of the type of periods very heavy bleeding and some lighyer
+637: Too soon to tell
+638: Can't tell yet
+640: More painful
+641: Continuous bleeding since 2nd vaccine but I know this is probably coincidental (14 days and ongoing)
+642: Its too soon to notice
+644: Its too early to say
+645: Yes- started menstruating
+646: as prev - intermenstrual bleeding one month since 2nd Pfizer vaccine
+648: Had first period in 7 month in april
+649: I am peri menopausal and have the Minera coil plus estrogen 2mg
+650: I have not had a period since September 2020
+651: Time between periods seems to have increased since vaccination but I also have PCOS on ultrasound
+
+*Suggestion: Consider cleaning the raw text or running `add_incomplete`
+
+
+=====
+EMPTY
+=====
+
+The following observations were empty:
+
+  --NONE FOUND--
+
+
+==================
+DOUBLE PUNCTUATION
+==================
+
+The following observations were double punctuation:
+
+2, 19, 24, 40, 52, 54, 65, 91, 98, 111, 116, 129, 143, 149, 156, 159, 171, 186, 200, 222, 246, 248, 249, 276, 279, 296, 298, 309, 320, 372, 377, 380, 382, 383, 385, 387, 410, 421, 432, 433, 483, 493, 505, 510, 517, 519, 537, 554, 555, 559, 562, 581, 595, 599, 619, 622, 623, 630, 647, 652
+
+The following text is double punctuation:
+
+2: In January after the vaccine I had spotting almost through my whole cycle and my period was super heavy and I was throwing up due to really bad period pains. My cycle has gone back to normal after that.
+19: Too early to tell. Although I got my period a few days after getting the vaccine.
+24: I only gave birth 13 days ago. No period just yet.
+40: Not sure if it is related but my menstruation arrived 1.5 weeks earlier, 10 days after getting vaccinated.
+52: Had completely unexpected period 3 days after covid vaccine. I am on mini contraceptive pill and very rarely have a period (maybe 2 times a year).
+54: I haven't had a period since  my jab - it is currently three days late. However this is not rare.
+65: Had the vaccine on Thursday, was feeling ill in bed all day on Friday with body aches including tummy aches. On Saturday woke up with spotting which continued on Sunday (today) not sure if it will turn into a period as they are so irregular. It has been 38 days since the first day of my last period
+91: Too early to say as I was menstruating during the time of my vaccine. Or sort of menstruating. I started properly the 3rd March for 5 days. Had a one day break then every day since there has been some bleeding when I go to the toilet.
+98: Have not yet had one since vaccination. Due any day.
+111: Vaccine occurred on 10/3/21. Period is not due for another week, so not sure as yet if my cycle has been interrupted by the vaccine yet.
+116: I‰Ûªve not thought about it until now...but I have noticed hair loss, my last period was extremely heavy, really bad small skin bump acne which I‰Ûªd never had and I was low in mood. But, I just thought some of the mental health effects were mainly due to the pandemic overall.
+129: Only had one period since but possibly bleeding for longer. Very light for 3 or so days then normal/heavy for 3 or so days.
+143: Yes, since getting my vaccine,  Ive got severe back pain,  bloating & nausea. Dark brown-black clotty discharge.
+149: Heavier flow and not arriving on time. Period usually starts on the 1st. After the jab it was late by 14 days
+156: My period app says I am due but it hasnt come yet. Although this could be a side effect of stopping my depo contraceptive injection.
+159: It has only been 2.5 weeks since I was vaccinated so it is too early to say.
+171: I had my vaccine on the same day I came on my period. For the first time I experience no pain or bloating. Could be a co-incidence but it was the best period ever! Light and pain free!!
+186: Too early to tell. I have only had 1 period since being vaccinated. My second was due yesterday, I am one day late.
+200: My last period, post vaccine, was heavier and I had a lot more stomach cramps. It lasted half a day longer than usual - it‰Ûªs normally 4 days - and my PMS was awful. I was anxious, teary and very lethargic.
+222: One cycle I did not have a full bleed, just spotted. Also length is shorter between periods.
+246: Haven't had a period yet. Only had the jab 2 weeks.
+248: I'm actually not sure. I haven't thought of them in relation to each other.
+249: Was on period at time of vaccine. Period was longest one I have had yet. Was 14 days.
+276: Haven‰Ûªt had a period yet after vaccine. Next one should be April 12.
+279: My cycle was slightly shorter and my period got started quicker without the few days of light, brown bleeding. Quite a lot of clots.
+296: Period was running late started a week and bit after. Probably a coincidence. But otherwise no change.
+298: I‰Ûªve just had one since (I‰Ûªm currently on my period). It‰Ûªs the same, but just came later than usual. Hasn‰Ûªt been long enough to see if it‰Ûªs disrupted or not.
+309: I had my first period for over a year since receiving the vaccine. I do not think this is related.
+320: I got my first shot just after my last period, so I have not had another period yet. However I haven‰Ûªt noticed any changes in relation to my cycle.
+372: I have only had one cycle but I had spotting for 2 days before my period. I have had spotting in the past but not for the past three/four cycles pre vaccine.
+377: I had a miscarriage. I did not know I was pregnant and get the vaccine when I was 4 weeks pregnant. I found out a week later but miscarried at 7 weeks although scans show the pregnancy did not develop after 4 weeks. I do not believe that it‰Ûªs related to the vaccine although I can‰Ûªt rule it out.
+380: My period was due the day after I was vaccinated. It ended up being 2 weeks late.
+382: Only had 1 period since the 1st vaccine. Period was 2 days late, and lighter than normal.
+383: I have to answer no because my periods have been irregular for some time (pre the pandemic). I have previously gone without a period for 3 months, so not having one since December 2020 is not really unusual for me and I would not attribute it to the vaccine, rather it would be a symptom of moving into my menopause.
+385: It might be too soon to say but since I had the first vaccine I have had my longest period to date. I'm still bleeding since 13th March.
+387: I have not had a period since. I am about two weeks late. I am not pregnant.
+410: There were only 7 days between the vaccine and my last period so difficult to tell if there have been changes. But no noticable changes in the one period since the jab.
+421: There were changes but I do not believe it was connected to the vaccine. It was going to happen as my hormones changed.
+432: I missed a period while I had Covid symptoms. Also missed period straight after 1st dose of injection.  Not yet due period following 2nd injection
+433: Just before getting vaccinated, my period came early. But a few days after the vaccine, I experienced spotting during my cycle which has never happened before.
+483: I got my vaccination on the 23rd December 2020 and that menstrual cycle lasted 46 days. The next cycle was 32 days, and my current is at 26 days but is estimated to be 31 days this month (based off of an average of 2 years of data).
+493: I have only had 2 periods since vaccination. The first was as usual but the second came a few days earlier.
+505: Too recent to know. My last period ended the day after my vaccination.
+510: My menstruated cycles have become very irregular in the last few months, but I had not attributed this to being connected to the vaccine? As I am on the progesterone only pill irregularities in cycle are normal.
+517: It is too early to tell. My Cooke was taken out on the same day as I had my jab. I had my period that day and haven‰Ûªt stopped bleeding yet.
+519: No further periods since vaccination  but possibly due to increase in prolactin levels??
+537: I had my vaccine on Sunday and started a period the same day. It has been extremely heavy and I am very fatigued.
+554: On combined pull to control periods, won't know until next break in 2.5 months.
+555: My 'period' this month only lasted about an hour... My periods are very irregular but not like that!
+559: I had an abnormal smear which has caused changes to my regular bleeding. Due to this and the treatment I cannot say whether any abnormality is due to the vaccine.
+562: I had a miscarriage- conception roughly at same time as vaccination...
+581: Not had chance as I had my vaccination the day my period started. And it only finished yesterday.
+595: Since my 1st shot in Dec, my cycle has been at its longest but I didn‰Ûªt feel this was secondary to my injections. I just thought it was my period continuing on this increasing pattern.
+599: Coincided with contraception removal. Periods have returned after 10 years of mirena.
+619: My last period started the day after I had my jab. However, this cycle has been a bit odd. I usually predict my periods through tracking my cervical mucus as a marker of ovulation. I had unexpected spotting at the time I expected to ovulate and am only now getting some mucus which leads me to believe my period will be later than I would usually expect
+622: After the dose of vaccination, none of the period stopping medications working on me this time. I tried transexamic acid tablets and Provera progesterone tablets. But my bleeding is still not stopping which usually stops after taking transexamic acid.
+623: I came on my period 5 days early. 2 days after the vaccination.
+630: Too soon to say. Vaccine 2 days ago. Period started one day ago.
+647: Very low mood that lasted for about 21 days after the first vaccine, which coincided with day 2 of my period. Could also have been due to other factors (death in extended family).
+652: Period had started 3 days before the vaccine. Once vaccinated, it became extremely heavy for the following 7 days (is usually very heavy for 2 days). It lasted 12 days in total. I began taking ferrous fumerate on day 8 as prescribed by my GP due to low iron showing in my blood test (which was taken the week before the vaccine).
+
+*Suggestion: Consider running `sentSplit`
+
+
+=====================
+NON SPACE AFTER COMMA
+=====================
+
+The following observations were non space after comma:
+
+512
+
+The following text is non space after comma:
+
+512: Yes I was regular every 28 days on a Wednesday,  then in February it was late on a Saturday ,then March was late on a Monday.
+
+*Suggestion: Consider running `comma_spacer`
+
+
+========
+NO ALPHA
+========
+
+The following observations were no alpha:
+
+  --NONE FOUND--
+
+
+=========
+NON ASCII
+=========
+
+The following observations were non ascii:
+
+7, 12, 23, 48, 75, 84, 85, 99, 100, 106, 109, 114, 116, 128, 142, 167, 183, 200, 201, 208, 225, 226, 255, 257, 276, 278, 283, 284, 298, 302, 310, 314, 317, 318, 320, 326, 347, 364, 377, 391, 394, 400, 448, 466, 473, 484, 486, 488, 490, 497, 507, 516, 517, 525, 540, 542, 543, 547, 556, 577, 582, 589, 594, 595, 602, 604, 609, 613, 639
+
+The following text is non ascii:
+
+7: Severe and sharp breast pain on one side I think linked to cycle which I‰Ûªve never had before. Usually it‰Ûªs slight tenderness
+12: It‰Ûªs been irregular before so basically hadn‰Ûªt had a proper period in a while.
+23: Cycles seem much shorter but aren‰Ûªt actually much shorter
+48: I haven‰Ûªt had one since the vaccine.
+75: I take the pill with out brakes so don‰Ûªt know
+84: Haven‰Ûªt had period yet should be end of month
+85: Haven‰Ûªt had a period since the jab, which was only 4 days ago
+99: Only got vaccinated yesterday so it‰Ûªs too early to say
+100: I haven‰Ûªt had a period since my first vaccination
+106: Spotting in between periods which hasn‰Ûªt happened in years
+109: I got the vaccine yesterday and I‰Ûªm due to start my period this week so can‰Ûªt say for now
+114: I had the injection a few days after I started my last period, so it‰Ûªs too soon to tell
+116: I‰Ûªve not thought about it until now...but I have noticed hair loss, my last period was extremely heavy, really bad small skin bump acne which I‰Ûªd never had and I was low in mood. But, I just thought some of the mental health effects were mainly due to the pandemic overall.
+128: Can‰Ûªt tell, it hasn‰Ûªt been long enough since I had the jabs.
+142: Only 2 periods but both 32/33 day cycles which is ‰ÛÏmore regular‰Û than recently.
+167: I just got vaccinated a week ago so I couldn‰Ûªt observe any changes
+183: I‰Ûªve not yet received today‰Ûªs date 19/03/2021 and receiving on 28/03/2021 and currently on period so have to wait next month (April) to find out
+200: My last period, post vaccine, was heavier and I had a lot more stomach cramps. It lasted half a day longer than usual - it‰Ûªs normally 4 days - and my PMS was awful. I was anxious, teary and very lethargic.
+201: it‰Ûªs only been a couple of weeks since I had the vaccine so I haven‰Ûªt had a full cycle to judge ify cycle has been disrupted
+208: It‰Ûªs only been 28 days since my vaccine and I think my most recent period was early by several days
+225: I‰Ûªve not had my period yet
+226: I‰Ûªve not had a period yet
+255: Potentially a change to luteal phase as I‰Ûªve only started tracking ovulation since vaccine.
+257: Think it‰Ûªs too soon to say. I was slightly ‰Û÷late‰Ûª this months compared to the last few months
+276: Haven‰Ûªt had a period yet after vaccine. Next one should be April 12.
+278: Haven‰Ûªt had period since yet
+283: I‰Ûªve not had a period since
+284: My period was five days late (which is usual for me after receiving a vaccination; it also happens with flu jabs) but as I‰Ûªve only had one period it seems too soon to say whether or not there‰Ûªs overall disruption.
+298: I‰Ûªve just had one since (I‰Ûªm currently on my period). It‰Ûªs the same, but just came later than usual. Hasn‰Ûªt been long enough to see if it‰Ûªs disrupted or not.
+302: I haven‰Ûªt had a period since my vaccination.
+310: Haven‰Ûªt had a period yet since vaccination (not due for another 3 weeks)
+314: Have only just been vaccinated and haven‰Ûªt had a period yet
+317: My period is much heavier and I‰Ûªm experiencing amplified symptoms i.e cramps, back pain, headaches, interrupted sleep
+318: I‰Ûªm unsure because I only had it a week ago but I think my period may be one day late as of right now
+320: I got my first shot just after my last period, so I have not had another period yet. However I haven‰Ûªt noticed any changes in relation to my cycle.
+326: It hasn‰Ûªt been long enough to say
+347: It‰Ûªs been about a month after, so tough to say. I feel like I am about to get my period though
+364: Haven‰Ûªt had one yet
+377: I had a miscarriage. I did not know I was pregnant and get the vaccine when I was 4 weeks pregnant. I found out a week later but miscarried at 7 weeks although scans show the pregnancy did not develop after 4 weeks. I do not believe that it‰Ûªs related to the vaccine although I can‰Ûªt rule it out.
+391: Can‰Ûªt be sure yet, it‰Ûªs only been a few weeks
+394: I haven‰Ûªt been due once since.  Only vaccinated 26th March
+400: Early ‰ÛÏperiod‰Û after jab by 3 days or possible early miscarriage (Chem pregnancy)
+448: I haven‰Ûªt had a period yet
+466: Not had one yet since vaccine so can‰Ûªt comment
+473: I hadn‰Ûªt had a period for two year and had a small bleed a week after my first vaccine.
+484: Haven‰Ûªt been a long enough time after the vaccine to determine, however, I am bleeding between period now in March (I got the vaccine mid feb just before my feb period) so may be related but it‰Ûªs too soon to tell
+486: Can‰Ûªt say yet
+488: I‰Ûªve not had a period since my vaccine
+490: hasn‰Ûªt been long enough to know
+497: More clots and cramps than usual but I don‰Ûªt suspect that‰Ûªs related to the vaccine?
+507: Only recently had the vaccine so it‰Ûªs too early to tell
+516: Period late, but I‰Ûªm 52 so I‰Ûªm expecting them to stop soon anyway
+517: It is too early to tell. My Cooke was taken out on the same day as I had my jab. I had my period that day and haven‰Ûªt stopped bleeding yet.
+525: I don‰Ûªt really know yet
+540: It‰Ûªs not been long enough to check - I need to keep monitoring
+542: I‰Ûªm due my first period anytime now which will be the first one since the vaccine.
+543: Haven‰Ûªt had one since
+547: I‰Ûªve not had a period yet since vaccination as I‰Ûªm not due yet
+556: I haven‰Ûªt had a period yet after receiving the vaccine .
+577: Don‰Ûªt know
+582: I took a period after the vaccine, I hadn‰Ûªt had one in months beforehand.
+589: Can‰Ûªt answer - jab this week
+594: I started a period, 2 days after vaccine,  which wasn‰Ûªt due for another 2 weeks
+595: Since my 1st shot in Dec, my cycle has been at its longest but I didn‰Ûªt feel this was secondary to my injections. I just thought it was my period continuing on this increasing pattern.
+602: Haven‰Ûªt bleed since my vaccine
+604: '+ menopause symptoms that I didn‰Ûªt previously have!
+609: I had a period hadn‰Ûªt had one since last August 2020
+613: My period had started two days prior to my first immunisation, but I didn‰Ûªt notice any difference other than it was heavier than the previous month, but my periods severity have been fluctuating recently.
+639: I‰Ûªve had a coil fitted within the last 6 weeks so everything is changed.
+
+*Suggestion: Consider exploring `?Encoding`
+
+
+=============
+MISSING VALUE
+=============
+
+The following observations were missing value:
+
+408
+
+
+==================
+CONTAINING ESCAPED
+==================
+
+The following observations were containing escaped:
+
+  --NONE FOUND--
+
+
+=================
+CONTAINING DIGITS
+=================
+
+The following observations were containing digits:
+
+1, 4, 9, 22, 24, 28, 31, 40, 51, 52, 57, 58, 60, 63, 64, 65, 66, 74, 80, 83, 85, 90, 91, 96, 111, 112, 120, 124, 129, 131, 136, 138, 142, 145, 149, 155, 159, 168, 174, 176, 182, 183, 184, 186, 197, 200, 206, 208, 230, 234, 237, 240, 246, 249, 252, 258, 261, 262, 272, 273, 276, 282, 285, 287, 300, 306, 310, 311, 315, 324, 325, 333, 336, 342, 356, 357, 358, 359, 361, 362, 363, 370, 372, 373, 377, 380, 382, 383, 385, 386, 388, 389, 392, 394, 399, 400, 410, 412, 414, 418, 422, 428, 431, 432, 441, 449, 457, 460, 461, 464, 474, 481, 483, 489, 493, 496, 509, 512, 513, 516, 535, 538, 541, 549, 551, 554, 557, 558, 564, 569, 574, 579, 587, 591, 592, 594, 595, 598, 599, 607, 608, 609, 615, 616, 623, 624, 627, 630, 639, 641, 646, 647, 648, 649, 650, 652, 653
+
+The following text is containing digits:
+
+1: I have only had one period since and it was 5 days late
+4: Nexplanon implant removed in Nov 2020 and periods shorter now (5 days) and beginning to bleed once a month
+9: vaccinated 23rd feb 2021 too early to say if theres been an impact
+22: Missed February 2021 only so far
+24: I only gave birth 13 days ago. No period just yet.
+28: It was only 8 days ago and my period started 3 days ago so it's difficult to know
+31: Not applicable, was only vaccinated 2 days ago
+40: Not sure if it is related but my menstruation arrived 1.5 weeks earlier, 10 days after getting vaccinated.
+51: It has only been 2 weeks since my vaccine so cannot say
+52: Had completely unexpected period 3 days after covid vaccine. I am on mini contraceptive pill and very rarely have a period (maybe 2 times a year).
+57: Came down with covid-19 3 days later so cannot state whether disrupted menstral cycle was due to the vaccine or the infection itself.
+58: This period is late by 17 days
+60: My menstrual cycle isn't due for another 6days.
+63: I've had my first period in about 3 months
+64: I haven't had a period since my 2nd vaccine
+65: Had the vaccine on Thursday, was feeling ill in bed all day on Friday with body aches including tummy aches. On Saturday woke up with spotting which continued on Sunday (today) not sure if it will turn into a period as they are so irregular. It has been 38 days since the first day of my last period
+66: Only one period since then, it was 2 days late, probably due to experiencing a day of side effects
+74: My first period after the vaccine has been completely different to any in the previous 12 months
+80: Constant right side ovary pain from 19th January
+83: After Oxford vaccine later in the night started to menstral cycle even though not due for well over 2 weeks by average as was only on day 20 of cycle and I average at 36 days
+85: Haven‰Ûªt had a period since the jab, which was only 4 days ago
+90: Duration of period after 1st cycle was lighter
+91: Too early to say as I was menstruating during the time of my vaccine. Or sort of menstruating. I started properly the 3rd March for 5 days. Had a one day break then every day since there has been some bleeding when I go to the toilet.
+96: Too early to say, it was only 10 days ago
+111: Vaccine occurred on 10/3/21. Period is not due for another week, so not sure as yet if my cycle has been interrupted by the vaccine yet.
+112: Too soon to tell (had the vaccine 2 days ago)
+120: 2 weeks after my normal period and 4 weeks after second vaccine I had a lighter period lasting 7 days, a normal period 2 weeks later,  when I would normally be due, and a normal one after that.
+124: I only got vaccinated 2 weeks ago so no changes as yet
+129: Only had one period since but possibly bleeding for longer. Very light for 3 or so days then normal/heavy for 3 or so days.
+131: Coil removed due to bleeding menstruated cycle started approx Nov 2020
+136: I have only had 4 periods before my vaccine and 1 since so I can't compare.
+138: I have not had a period since before my positive Covid test in December 2020
+142: Only 2 periods but both 32/33 day cycles which is ‰ÛÏmore regular‰Û than recently.
+145: I have not menstruated since vaccine as only been 3 weeks.
+149: Heavier flow and not arriving on time. Period usually starts on the 1st. After the jab it was late by 14 days
+155: I've had 2 bouts of spotting and also period is late and also more cramping
+159: It has only been 2.5 weeks since I was vaccinated so it is too early to say.
+168: Have had my first period in 6 months after vaccination
+174: My 1st period following having had the vaccine is not yet due
+176: It's only been 6 days since vaccine so I've no idea.
+182: My period started 3 days early
+183: I‰Ûªve not yet received today‰Ûªs date 19/03/2021 and receiving on 28/03/2021 and currently on period so have to wait next month (April) to find out
+184: Only spotted for 1 day after having oxford vaccine
+186: Too early to tell. I have only had 1 period since being vaccinated. My second was due yesterday, I am one day late.
+197: Vaccinated 3 days ago so don't know
+200: My last period, post vaccine, was heavier and I had a lot more stomach cramps. It lasted half a day longer than usual - it‰Ûªs normally 4 days - and my PMS was awful. I was anxious, teary and very lethargic.
+206: Only had the injection 2 days ago so cant tell.
+208: It‰Ûªs only been 28 days since my vaccine and I think my most recent period was early by several days
+230: Haven't had a period for about 4 months before anyway
+234: Hot flushes returned after vaccine they had stopped for 6 months
+237: Only just had vaccine and period started 2 days later
+240: It's only been one week since the first jab, which did make me very unwell for 4 days.
+246: Haven't had a period yet. Only had the jab 2 weeks.
+249: Was on period at time of vaccine. Period was longest one I have had yet. Was 14 days.
+252: I was vaccinated 1 week ago and my period isn't due for another week.
+258: Only just had jab on the Saturday 19th
+261: Had a very heavy period following vaccination that was 2 weeks early
+262: Menstrual cycle started after 9 months
+272: I had my period 2 weeks late
+273: My last period was jan 2021
+276: Haven‰Ûªt had a period yet after vaccine. Next one should be April 12.
+282: Period started 2-3 days after vaccination
+285: Literally got it this morning (23/03/2021)
+287: The day after my jab I had my period after only 2 and half weeks and it lasted 10days
+300: Only had the vaccine 2 days ago
+306: I only had the vaccine 1 days ago and my period started two days after making me a week early
+310: Haven‰Ûªt had a period yet since vaccination (not due for another 3 weeks)
+311: Not sure as I havent had a period since my covid vaccine which was around 3 weeks ago now but my cycles are very irregular anyway
+315: Period began 2 days after receiving vaccine do not know if it is related
+324: I am due to start my 1st menstrual cycle since being vaccinated this week,
+325: First period after vaccination 5 days longer than normal -but always very regular
+333: Was only vaccinated 2 days ago
+336: I've had one normal cycle (23 days) and one long cycle (39 days) since being vaccinated.
+342: My period after the vaccine was a lot later than usual. I was 5/6 days late and i am rarely that late
+356: 2 bleeds with a short break
+357: My Period started the day after I had my vaccine which was 10 days early
+358: To early to tell. Although it was 35 days since last period which is substantially longer than normal
+359: Only been 1 week. Too early to tell
+361: Only had it 3 days ago
+362: As starred earlier, I am 56 and I think I am pretty much done (last bleed/spotting Aug 2020)
+363: Shorter time between cycles I was regular 28 day cycle now can be 24 days
+370: Latest period has lasted 28 days when normally only last 7 days
+372: I have only had one cycle but I had spotting for 2 days before my period. I have had spotting in the past but not for the past three/four cycles pre vaccine.
+373: Period is late when it is normally like clockwork  even to within 2 hours
+377: I had a miscarriage. I did not know I was pregnant and get the vaccine when I was 4 weeks pregnant. I found out a week later but miscarried at 7 weeks although scans show the pregnancy did not develop after 4 weeks. I do not believe that it‰Ûªs related to the vaccine although I can‰Ûªt rule it out.
+380: My period was due the day after I was vaccinated. It ended up being 2 weeks late.
+382: Only had 1 period since the 1st vaccine. Period was 2 days late, and lighter than normal.
+383: I have to answer no because my periods have been irregular for some time (pre the pandemic). I have previously gone without a period for 3 months, so not having one since December 2020 is not really unusual for me and I would not attribute it to the vaccine, rather it would be a symptom of moving into my menopause.
+385: It might be too soon to say but since I had the first vaccine I have had my longest period to date. I'm still bleeding since 13th March.
+386: My first cycle after the vaccine was 6 days late, and lighter than usual
+388: It was only 2 days ago
+389: Vaccine was only 2 days ago (on the last day of my last period)
+392: About to have my 1st post-vaccine period
+394: I haven‰Ûªt been due once since.  Only vaccinated 26th March
+399: Too early to say -got my vaccine 6 days before my most recent period
+400: Early ‰ÛÏperiod‰Û after jab by 3 days or possible early miscarriage (Chem pregnancy)
+410: There were only 7 days between the vaccine and my last period so difficult to tell if there have been changes. But no noticable changes in the one period since the jab.
+412: Only had the vaccination on 26/03 and period started today 28/03
+414: Had my 1st shot on 25th March, and I was late by 5 days
+418: I haven't had a period for 54 days but my vaccine was 1 week ago.
+422: My period lasts 5 days on average, after my vaccination it lasted for 8 days.
+428: Spotting 2 days after injection
+431: Jab was only 5 days ago!
+432: I missed a period while I had Covid symptoms. Also missed period straight after 1st dose of injection.  Not yet due period following 2nd injection
+441: Not enough time to tell, I had my first vaccine on 26/03/21.
+449: Only had the jab 24hrs ago so too early to tell
+457: Period have been between 28 and 32 days, and this month was 41 days
+460: It is too early to tell as I only had the vaccine 3 days ago.
+461: It has only been one month, but my period came 2 weeks early the time after I had my first shot
+464: I got a period for the first time in 5 months that lasted 5 days and was similar to spotting (not much on a pad/ tampon but enough to warrant wearing one)
+474: I have had 2 small periods since my vaccine even though I have a coil and they had stopped for about a year
+481: Only received 2nd vaccination last week
+483: I got my vaccination on the 23rd December 2020 and that menstrual cycle lasted 46 days. The next cycle was 32 days, and my current is at 26 days but is estimated to be 31 days this month (based off of an average of 2 years of data).
+489: A week after the vaccine my period arrived - it was 83 days late.
+493: I have only had 2 periods since vaccination. The first was as usual but the second came a few days earlier.
+496: This one came early, day after injection 3 days early
+509: No bleed since August 2020
+512: Yes I was regular every 28 days on a Wednesday,  then in February it was late on a Saturday ,then March was late on a Monday.
+513: Hard to tell as I had IUD fitted in Dec 2020
+516: Period late, but I‰Ûªm 52 so I‰Ûªm expecting them to stop soon anyway
+535: Unsure - I had my second vaccine this week and my period is now 2 days late however my periods are not that regular so I have to work on an average cycle length to predict my periods so it is not always accurate, and currently on nightshifts and this can also effect my menstrual cycle too. So could be for a number of reasons
+538: Only had injection 1 week ago so not due to have a period yet
+541: Period Started 10 days earlier
+549: I started my period 8 -10 days early after my first vaccine.
+551: I had the vaccination and then 2 weeks later I had a hysterectomy. I had one period between vaccination and hysterectomy - which seemed normal ish
+554: On combined pull to control periods, won't know until next break in 2.5 months.
+557: I have had pre period spotting for the 2 periods after the first jab extending my period length to 8 days
+558: I had a period 20 days after my first vaccination in January and then nothing since then
+564: I've had spotting from 2 days after my jab
+569: Yes, I had an 18 day cycle but this was my first full cycle since miscarriage Dec 2020
+574: I bled from the day after the jab for 5 weeks
+579: Period length is shorter (5 days) but cycle is still long.
+587: I only got it 2 days ago
+591: Got unexpected period 2 days after the shot
+592: Only vaccinated on 17th March
+594: I started a period, 2 days after vaccine,  which wasn‰Ûªt due for another 2 weeks
+595: Since my 1st shot in Dec, my cycle has been at its longest but I didn‰Ûªt feel this was secondary to my injections. I just thought it was my period continuing on this increasing pattern.
+598: Yeh to have a cycle post-partum (12 weeks).
+599: Coincided with contraception removal. Periods have returned after 10 years of mirena.
+607: I only had 1 or 2 periods in total last year.  So far this year I have had 3
+608: Started the day after my jab, the following one came 2 days sooner than expected even on my short cycle
+609: I had a period hadn‰Ûªt had one since last August 2020
+615: Only vaccinated on 1/4/21, too soon to answer.
+616: I did not have a period in January, February and March 2021.
+623: I came on my period 5 days early. 2 days after the vaccination.
+624: My cycle was 32 days
+627: Have only just had injection 3 days ago and period is due tomorrow so I haven't had chance to see if it has changed
+630: Too soon to say. Vaccine 2 days ago. Period started one day ago.
+639: I‰Ûªve had a coil fitted within the last 6 weeks so everything is changed.
+641: Continuous bleeding since 2nd vaccine but I know this is probably coincidental (14 days and ongoing)
+646: as prev - intermenstrual bleeding one month since 2nd Pfizer vaccine
+647: Very low mood that lasted for about 21 days after the first vaccine, which coincided with day 2 of my period. Could also have been due to other factors (death in extended family).
+648: Had first period in 7 month in april
+649: I am peri menopausal and have the Minera coil plus estrogen 2mg
+650: I have not had a period since September 2020
+652: Period had started 3 days before the vaccine. Once vaccinated, it became extremely heavy for the following 7 days (is usually very heavy for 2 days). It lasted 12 days in total. I began taking ferrous fumerate on day 8 as prescribed by my GP due to low iron showing in my blood test (which was taken the week before the vaccine).
+653: I've only had worsened pms symptoms and spotting, but no actual period in the 3 cycles since my first vaccination.
+
+*Suggestion: Consider using `replace_number`
+
+
+=====================
+INDICATING INCOMPLETE
+=====================
+
+The following observations were indicating incomplete:
+
+116, 555, 562
+
+The following text is indicating incomplete:
+
+116: I‰Ûªve not thought about it until now...but I have noticed hair loss, my last period was extremely heavy, really bad small skin bump acne which I‰Ûªd never had and I was low in mood. But, I just thought some of the mental health effects were mainly due to the pandemic overall.
+555: My 'period' this month only lasted about an hour... My periods are very irregular but not like that!
+562: I had a miscarriage- conception roughly at same time as vaccination...
+
+*Suggestion: Consider using `incomplete_replace`
+
+
+======================
+POTENTIALLY MISSPELLED
+======================
+
+The following observations were potentially misspelled:
+
+4, 7, 9, 12, 23, 25, 34, 36, 38, 48, 52, 57, 62, 64, 66, 75, 80, 81, 83, 84, 85, 89, 91, 99, 100, 105, 106, 109, 114, 116, 119, 128, 131, 138, 142, 143, 156, 166, 167, 171, 183, 189, 198, 200, 201, 208, 215, 219, 225, 226, 255, 257, 258, 267, 276, 278, 283, 284, 297, 298, 301, 302, 303, 307, 310, 311, 314, 317, 318, 320, 326, 340, 347, 355, 362, 364, 376, 377, 385, 391, 394, 400, 409, 410, 414, 416, 426, 432, 434, 442, 447, 448, 449, 459, 465, 466, 473, 475, 478, 481, 483, 484, 485, 486, 488, 490, 491, 497, 507, 510, 513, 516, 517, 519, 525, 531, 535, 540, 542, 543, 544, 547, 548, 551, 552, 555, 556, 567, 569, 577, 582, 589, 592, 593, 594, 595, 598, 599, 602, 604, 609, 611, 613, 622, 632, 636, 639, 641, 646, 649, 651, 652
+
+The following text is potentially misspelled:
+
+4: <<nexplanon>> implant removed in <<nov>> and periods shorter now days and beginning to bleed once a month
+7: severe and sharp breast pain on one side i think linked to cycle which i‰ûve never had before usually it‰ûs slight tenderness
+9: vaccinated <<rd>> <<feb>> too early to say if theres been an impact
+12: it‰ûs been irregular before so basically hadn‰ût had a proper period in a while
+23: cycles seem much shorter but aren‰ût actually much shorter
+25: <<ius>> <<insitu>> irregular periods
+34: possibly because i received <<depo>> a week after the vaccine
+36: hard to say if the irregular periods are still due to <<covid>> or the vaccination
+38: one normal period but caught <<covid>> at the same time
+48: i haven‰ût had one since the vaccine
+52: had completely unexpected period days after <<covid>> vaccine i am on mini contraceptive pill and very rarely have a period maybe times a year
+57: came down with <<covid>> days later so cannot state whether disrupted <<menstral>> cycle was due to the vaccine or the infection itself
+62: <<havnt>> had one yet
+64: i haven't had a period since my <<nd>> vaccine
+66: only one period since then it was days late probably due to <<experiencing>> a day of side effects
+75: i take the pill with out brakes so don‰ût know
+80: constant right side ovary pain from <<th>> january
+81: still bleeding <<continuously>>
+83: after oxford vaccine later in the night started to <<menstral>> cycle even though not due for well over weeks by average as was only on day of cycle and i average at days
+84: haven‰ût had period yet should be end of month
+85: haven‰ût had a period since the jab which was only days ago
+89: no cycle as on <<hrt>>
+91: too early to say as i was menstruating during the time of my vaccine or sort of menstruating i started properly the <<rd>> march for days had a one day break then every day since there has been some bleeding when i go to the toilet
+99: only got vaccinated yesterday so it‰ûs too early to say
+100: i haven‰ût had a period since my first vaccination
+105: only had one period since but my uterus has felt more crampyfluttery
+106: spotting in between periods which hasn‰ût happened in years
+109: i got the vaccine yesterday and i‰ûm due to start my period this week so can‰ût say for now
+114: i had the injection a few days after i started my last period so it‰ûs too soon to tell
+116: i‰ûve not thought about it until nowbut i have noticed hair loss my last period was extremely heavy really bad small skin bump acne which i‰ûd never had and i was low in mood but i just thought some of the mental health effects were mainly due to the pandemic overall
+119: excessive <<clottting>> in blood
+128: can‰ût tell it hasn‰ût been long enough since i had the jabs
+131: coil removed due to bleeding menstruated cycle started <<approx>> <<nov>>
+138: i have not had a period since before my positive <<covid>> test in december
+142: only periods but both day cycles which is ‰ûïmore regular‰û than recently
+143: yes since getting my vaccine <<ive>> got severe back pain bloating nausea dark brownblack clotty discharge
+156: my period <<app>> says i am due but it <<hasnt>> come yet although this could be a side effect of stopping my <<depo>> contraceptive injection
+166: my last period the first one after my <<covid>> vaccination was very small but i do not know if that is a pattern
+167: i just got vaccinated a week ago so i couldn‰ût observe any changes
+171: i had my vaccine on the same day i came on my period for the first time i experience no pain or bloating could be a coincidence but it was the best period ever light and pain free
+183: i‰ûve not yet received today‰ûs date and receiving on and currently on period so have to wait next month april to find out
+189: i have not had a period since having the vaccine i don't think this is related in any way as i have <<pcos>> and have had long delays between periods before
+198: currently changing to a continuous form of <<hrt>> since january so not having periods just spotting
+200: my last period post vaccine was heavier and i had a lot more stomach cramps it lasted half a day longer than usual it‰ûs normally days and my pms was awful i was anxious teary and very lethargic
+201: it‰ûs only been a couple of weeks since i had the vaccine so i haven‰ût had a full cycle to judge <<ify>> cycle has been disrupted
+208: it‰ûs only been days since my vaccine and i think my most recent period was early by several days
+215: i <<havnt>> had a period since my first vaccine
+219: i have had two periods only two weeks apart since having the jab <<ie>> second period at the time of ovulation
+225: i‰ûve not had my period yet
+226: i‰ûve not had a period yet
+255: potentially a change to luteal phase as i‰ûve only started tracking ovulation since vaccine
+257: think it‰ûs too soon to say i was slightly ‰ûlate‰û this months compared to the last few months
+258: only just had jab on the saturday <<th>>
+267: too early to say as periods were irregular at times before <<covid>>
+276: haven‰ût had a period yet after vaccine next one should be april
+278: haven‰ût had period since yet
+283: i‰ûve not had a period since
+284: my period was five days late which is usual for me after receiving a vaccination it also happens with flu jabs but as i‰ûve only had one period it seems too soon to say whether or not there‰ûs overall disruption
+297: i started the combined pill in february for the first time so my cycle has changed because of that i couldn't say if there have been any changes because of the <<covid>> vaccine
+298: i‰ûve just had one since i‰ûm currently on my period it‰ûs the same but just came later than usual hasn‰ût been long enough to see if it‰ûs disrupted or not
+301: <<dont>> get yet my period
+302: i haven‰ût had a period since my vaccination
+303: too irregular due to <<breastfeeding>> to answer
+307: i have started <<hrt>> with <<oestrogel>> and <<progesterone>> so my periods have been unsettled and couldn't say what has caused this
+310: haven‰ût had a period yet since vaccination not due for another weeks
+311: not sure as i <<havent>> had a period since my <<covid>> vaccine which was around weeks ago now but my cycles are very irregular anyway
+314: have only just been vaccinated and haven‰ût had a period yet
+317: my period is much heavier and i‰ûm <<experiencing>> amplified symptoms <<ie>> cramps back pain headaches interrupted sleep
+318: i‰ûm unsure because i only had it a week ago but i think my period may be one day late as of right now
+320: i got my first shot just after my last period so i have not had another period yet however i haven‰ût noticed any changes in relation to my cycle
+326: it hasn‰ût been long enough to say
+340: disturbance to my <<menstural>> cycle started before i had my first jab
+347: it‰ûs been about a month after so tough to say i feel like i am about to get my period though
+355: yes but got <<mirena>> coil a week later so most likely to be that
+362: as starred earlier i am and i think i am pretty much done last bleedspotting <<aug>>
+364: haven‰ût had one yet
+376: i had a period before <<covid>> vaccination due beginning of april
+377: i had a miscarriage i did not know i was pregnant and get the vaccine when i was weeks pregnant i found out a week later but miscarried at weeks although scans show the pregnancy did not develop after weeks i do not believe that it‰ûs related to the vaccine although i can‰ût rule it out
+385: it might be too soon to say but since i had the first vaccine i have had my longest period to date i'm still bleeding since <<th>> march
+391: can‰ût be sure yet it‰ûs only been a few weeks
+394: i haven‰ût been due once since only vaccinated <<th>> march
+400: early ‰ûïperiod‰û after jab by days or possible early miscarriage <<chem>> pregnancy
+409: no period after vaccine but i assumed it was unrelated and linked to <<pcos>>
+410: there were only days between the vaccine and my last period so difficult to tell if there have been changes but no <<noticable>> changes in the one period since the jab
+414: had my st shot on <<th>> march and i was late by days
+416: i started taking pill in january due to concerns of falling pregnant whilst <<inbetween>> vaccination
+426: i had a <<mirena>> coil inserted so my periods seem to have stopped
+432: i missed a period while i had <<covid>> symptoms also missed period straight after st dose of injection not yet due period following <<nd>> injection
+434: cannot comment due to stopping <<progesterone>> pill since having vaccine
+442: <<im>> aware my cycle has been disrupted by the implant so couldn't say if it was since having the vaccine
+447: my long <<covid>> symptoms have significantly improved whole days without fatigue and some few with no symptoms at all
+448: i haven‰ût had a period yet
+449: only had the jab <<hrs>> ago so too early to tell
+459: not sure as since <<covid>> not sure had a proper cycle
+465: have not had a period yet was only vaccinated last week my <<periodo>> is due in two weeks
+466: not had one yet since vaccine so can‰ût comment
+473: i hadn‰ût had a period for two year and had a small bleed a week after my first vaccine
+475: started <<zolodex>> injections around the same time
+478: difficult to say as had <<covid>> before the vaccine
+481: only received <<nd>> vaccination last week
+483: i got my vaccination on the <<rd>> december and that menstrual cycle lasted days the next cycle was days and my current is at days but is estimated to be days this month based off of an average of years of data
+484: haven‰ût been a long enough time after the vaccine to determine however i am bleeding between period now in march i got the vaccine mid <<feb>> just before my <<feb>> period so may be related but it‰ûs too soon to tell
+485: i started bleeding a few days after having the <<covid>> vaccine even though i had a week left of taking the pill
+486: can‰ût say yet
+488: i‰ûve not had a period since my vaccine
+490: hasn‰ût been long enough to know
+491: irregular cycle and new coil inserted so unable to say if missedlate <<etc>>
+497: more clots and cramps than usual but i don‰ût suspect that‰ûs related to the vaccine
+507: only recently had the vaccine so it‰ûs too early to tell
+510: my menstruated cycles have become very irregular in the last few months but i had not attributed this to being connected to the vaccine as i am on the <<progesterone>> only pill irregularities in cycle are normal
+513: hard to tell as i had <<iud>> fitted in <<dec>>
+516: period late but i‰ûm so i‰ûm expecting them to stop soon anyway
+517: it is too early to tell my <<cooke>> was taken out on the same day as i had my jab i had my period that day and haven‰ût stopped bleeding yet
+519: no further periods since vaccination but possibly due to increase in <<prolactin>> levels
+525: i don‰ût really know yet
+531: not sure if the vaccine or <<covid>> positive has changed my periods
+535: unsure i had my second vaccine this week and my period is now days late however my periods are not that regular so i have to work on an average cycle length to predict my periods so it is not always accurate and currently on <<nightshifts>> and this can also effect my menstrual cycle too so could be for a number of reasons
+540: it‰ûs not been long enough to check i need to keep monitoring
+542: i‰ûm due my first period anytime now which will be the first one since the vaccine
+543: haven‰ût had one since
+544: spotted between march and april cycle <<approx>> cycle began a week early april cycle much lighter than normal yay
+547: i‰ûve not had a period yet since vaccination as i‰ûm not due yet
+548: this coincided with my change from the pill to the <<iud>>
+551: i had the vaccination and then weeks later i had a hysterectomy i had one period between vaccination and hysterectomy which seemed normal <<ish>>
+552: i haven't had a period but as <<perimenopausal>> and irregular anyway i have no way of knowing if the vaccination caused any disruption
+555: my <<'period'>> this month only lasted about an hour my periods are very irregular but not like that
+556: i haven‰ût had a period yet after receiving the vaccine
+567: it is impossible to say due to my ongoing issues with my <<non>> existent reproductive system
+569: yes i had an day cycle but this was my first full cycle since miscarriage <<dec>>
+577: don‰ût know
+582: i took a period after the vaccine i hadn‰ût had one in months beforehand
+589: can‰ût answer jab this week
+592: only vaccinated on <<th>> march
+593: not had a period since my <<covid>> vaccination which was very recently
+594: i started a period days after vaccine which wasn‰ût due for another weeks
+595: since my st shot in <<dec>> my cycle has been at its longest but i didn‰ût feel this was secondary to my injections i just thought it was my period continuing on this increasing pattern
+598: yeh to have a cycle postpartum weeks
+599: coincided with contraception removal periods have returned after years of <<mirena>>
+602: haven‰ût bleed since my vaccine
+604: <<'>> menopause symptoms that i didn‰ût previously have
+609: i had a period hadn‰ût had one since last august
+611: i <<havent>> had a period since having first vaccine
+613: my period had started two days prior to my first <<immunisation>> but i didn‰ût notice any difference other than it was heavier than the previous month but my periods severity have been fluctuating recently
+622: after the dose of vaccination none of the period stopping medications working on me this time i tried <<transexamic>> acid tablets and <<provera>> <<progesterone>> tablets but my bleeding is still not stopping which usually stops after taking <<transexamic>> acid
+632: too soon to tell one week since vaccination one week until period pre period symptoms feel same as before vaccinesame as throughout lockdownmore abdominal pain and bloating since <<lockdown>> started
+636: fluctuation of the type of periods very heavy bleeding and some <<lighyer>>
+639: i‰ûve had a coil fitted within the last weeks so everything is changed
+641: continuous bleeding since <<nd>> vaccine but i know this is probably coincidental days and ongoing
+646: as <<prev>> <<intermenstrual>> bleeding one month since <<nd>> <<pfizer>> vaccine
+649: i am peri menopausal and have the <<minera>> coil plus estrogen <<mg>>
+651: time between periods seems to have increased since vaccination but i also have <<pcos>> on <<ultrasound>>
+652: period had started days before the vaccine once vaccinated it became extremely heavy for the following days is usually very heavy for days it lasted days in total i began taking ferrous <<fumerate>> on day as prescribed by my <<gp>> due to low iron showing in my blood test which was taken the week before the vaccine
+
+*Suggestion: Consider running `check_spelling_interactive`
+"
+"0","# Function to expand contractions in the text, and replace minor spelling issues"
+"0","fix.contractions <- function(doc) {"
+"0","  # ""won't"" is a special case as it does not expand to ""wo not"""
+"0","  doc <- gsub(""it’s"", ""it has"", doc)"
+"0","  doc <- gsub(""won't"", ""will not"", doc)"
+"0","  doc <- gsub(""can’t"", ""can not"", doc)"
+"0","  doc <- gsub(""can't"", ""can not"", doc)"
+"0","    doc <- gsub(""don't"", ""do not"", doc)"
+"0","    doc <- gsub(""don’t"", ""do not"", doc)"
+"0","  doc <- gsub(""'ll"", "" will"", doc)"
+"0","  doc <- gsub(""it's"", "" it has"", doc)"
+"0","    doc <- gsub(""'re"", "" are"", doc)"
+"0","  doc <- gsub(""'ve"", "" have"", doc)"
+"0","  doc <- gsub(""'m"", "" am"", doc)"
+"0","  doc <- gsub(""'d"", "" would"", doc)"
+"0","  doc <- gsub(""i'm"", ""i am"", doc)"
+"0","  doc <- gsub(""isn't"", ""is not"", doc)"
+"0","  doc <- gsub(""isn’t"", ""is not"", doc)"
+"0","  doc <- gsub(""haven't"", ""have not"", doc)"
+"0","  doc <- gsub(""haven’t"", ""have not"", doc)"
+"0","  doc <- gsub(""menstral"", ""menstrual"", doc)"
+"0",""
+"0","        # 's could be 'is' or could be possessive: it has no expansion"
+"0","  return(doc)"
+"0","}"
+"0",""
+"0","# Apply the function"
+"0","df_clean$vaccine_changescycle_othertxt <- sapply(df_clean$vaccine_changescycle_othertxt, fix.contractions)"
+"0",""
+"0","# Make cleaning function"
+"0","cleaning <- function(x) {"
+"0","  x <- replace_number(x) # Converts numbers to text form"
+"0","  x <-replace_abbreviation("
+"0","  x,"
+"0"," abbreviation = qdapDictionaries::abbreviations,"
+"0","  replace = NULL,"
+"0"," ignore.case = TRUE"
+"0",") # QDap'a replace abbreviation "
+"0","  #x<-na.omit(x)"
+"0","  x <- replace_html(x) # Removes HTML tags and symbols stick"
+"0","  x <- replace_kern(x) # The replace_kern function looks for 3 or more consecutive capital letters with spaces in between and removes the spaces (e.g. the B O M B to BOMB)"
+"0"," # x <- replace_incomplete(x) # replaces end of sentances without punctuation with '|'"
+"0","  x <- tolower(x) # makes everything lower case"
+"0","  x <- stripWhitespace(x) # removes extra white space"
+"0","}"
+"0",""
+"0","## Use the cleaning function "
+"0","df_clean$vaccine_changescycle_othertxt<- cleaning(df_clean$vaccine_changescycle_othertxt)"
+"0",""

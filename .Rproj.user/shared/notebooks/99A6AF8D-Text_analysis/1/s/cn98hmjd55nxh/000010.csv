@@ -1,0 +1,6 @@
+"0",""
+"0","df_raw <-import(here(""data"",""data_textanalysis.txt""), header=T) "
+"0",""
+"0","# Save raw version "
+"0","df_clean<-df_raw"
+"0",""
