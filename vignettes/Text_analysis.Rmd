@@ -85,8 +85,7 @@ library(rio)
 ### data load
 ```{r tidytext cleaner}
 
-#df_raw <-import(here("data/data_textanalysis.txt"), header=T) 
-df_raw <- read.table("data/dataextanalysis.text")
+df_raw <-import(here("data","text.csv.xlsx")) 
 
 # Save raw version 
 df_clean<-df_raw
