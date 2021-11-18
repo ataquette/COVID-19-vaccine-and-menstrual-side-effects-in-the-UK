@@ -18,9 +18,9 @@
 First double click on the project icon. You can then run any script (quantitative analysis, text analysis or Lasso analysis)
 
 The folder contains 3 datasets
-1) the original dataset of vaccinated individuals
-2) a list containing 5 imputed datasets
-3) a data containing the text entered by participants selection the option "Other" when asking about any menstrual changes post-COVID-19 vaccination.
+1) The original dataset of vaccinated individuals
+2) A list containing 5 imputed datasets
+3) A dataset containing the text entered by participants selection the option "Other" when asking about any menstrual changes post-COVID-19 vaccination.
 
 The folder contains 4 scripts
 1) The Flow chart
