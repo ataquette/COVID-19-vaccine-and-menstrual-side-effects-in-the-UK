@@ -83,9 +83,10 @@ library(rio)
 ```
 
 ### data load
-```{r tidytext clean}
+```{r tidytext cleaner}
 
-df_raw <-import(here("data","data_textanalysis.txt"), header=T) 
+#df_raw <-import(here("data/data_textanalysis.txt"), header=T) 
+df_raw <- read.table("data/dataextanalysis.text")
 
 # Save raw version 
 df_clean<-df_raw
@@ -276,7 +277,7 @@ graph_topuniLEM<-df_token %>%
 ```
 
 ### Bigrams
-```{r tidytext bigrams}
+```{r tidytext bigramss}
 
 ############### Bigrams ###########
 

@@ -1,6 +1,0 @@
-"0",""
-"0","# manipulation variables"
-"0","levels(dataor$smoke_before)[3]<-""Current Smoker"""
-"2","Error in levels(dataor$smoke_before)[3] <- ""Current Smoker"" : 
-  object 'dataor' not found
-"
