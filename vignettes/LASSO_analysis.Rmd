@@ -4,170 +4,112 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE )
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
-
 
 # 1. Data preparation
 ## Load packages
+
 ```{r packages}
 
 # Ensures the package "pacman" is installed
 if (!require("pacman")) install.packages("pacman")
+
 # Packages available from CRAN
 ##############################
 library(pacman)
 
-
 ## Load
 pacman::p_load(
-     glmnet, 
-     mlr,
-     Hmisc,
-     caret
+    glmnet, 
+    mlr,
+    Hmisc,
+    caret,
+    pROC
 )
-
 ```
 
 ## Load data
+
 ```{r dataload}
-
 # list of 5 imputed datasets
-multfin<-import(here("data","data_covid19vaccine_menstrualcycles_uk_names.Rda")) # imputed list
-
-# original data used for imputation
-dataor<-import(here("data","data_covid19vaccine_menstrualcycles_uk_original.Rda")) # original dataset of vaccinated people
-
-
-# describe the data
-#view(dfSummary(dataor) # 
+multfin <- import(here("data", "data_covid19vaccine_menstrualcycles_uk_imputed.Rda")) # imputed list
 ```
-
-
-
-
-## Load data
 
 ## manip variables
-```{r dataload}
 
-## add variable lifesat changes describes increases in dissatifaction
-multfin<-lapply(mult,function(x) mutate(x,lifesatchanges=(lifesat_lastyr-lifesat_before) ))
-
-
-## drops levels
-multfin<-lapply(multfin,function(x) droplevels(replace(x, x=="", NA)))
-
-## recode
-multfin<-lapply(multfin,function(x) mutate(x, contra_current_groupall = recode_factor(contra_current_groupall,HormonalP ="Progestin only",HormonalPE="Combined")))
-
-multfin<-lapply(multfin,function(x) mutate(x, vaccine_changescycle = recode_factor(vaccine_changescycle, "Other (please state)" ="Other","Yes, my menstrual cycles are LESS disrupted"="LESS disrupted", "Yes, my menstrual cycles are MORE disrupted"="MORE disrupted","No"="No changes")))
-
-
-
-# Find which ones have IUD
-# there are some who say Progestin and IUD -> we exclude them
-table(dataor$contra_current_groupall[dataor$contra_current_coppercoil_num=="1"])
-
-
-multfin<-lapply(multfin,function(x) 
-    mutate (x,
-            contra_current_groupall = case_when(  
-                contra_current_groupall=="Progestin only" & contra_current_coppercoil_num== 0 ~ "Progestin only",
-                contra_current_groupall=="Combined" & contra_current_coppercoil_num== 0 ~ "Combined",
-                contra_current_groupall=="Non Hormonal" & contra_current_coppercoil_num== 0 ~ "Other",
-                contra_current_groupall=="None" & contra_current_coppercoil_num== 0 ~ "None",
-                contra_current_groupall=="Other" & contra_current_coppercoil_num== 0 ~ "Other",
-                contra_current_coppercoil_num== 1 ~ "Copper IUD",
-            )))
-
-
-multfin<-lapply(multfin,function(x) 
-    mutate_if (x,
-               is.character, as.factor)
-)
-
-for (i in (1:5)){
-    levels(multfin[[i]]$covid_tested)[2]<-"Self diagnosed +"
-}
-
-
-############################### recode for binary response
-for (i in 1:length(multfin)){ 
-    multfin[[i]]$vaccine_changescycle_binary<-fct_collapse(multfin[[i]]$vaccine_changescycle, Other = c("Other","LESS disrupted","MORE disrupted"))
-}
-
-## recode
-multfin<-lapply(multfin,function(x) mutate(x, vaccine_changescycle_binary = recode_factor(vaccine_changescycle_binary,"Other" ="1", "No changes"="0")))
-
-multfin<-lapply(multfin,function(x) 
-    mutate(x, 
-           vaccine_changescycle_binary =as.numeric(as.character(vaccine_changescycle_binary)
-           )
-    )
-)
-
-```
-
-mult<-multfin
-
-
-
-
-
-## LASSO
-```{r lasso}
-
-
+```{r lassoprep}
 ## getting column names for lasso (select appropriate method below and comment out others)--------------------------
 
+mult <- multfin
+
 # make exposure list as all columns of dataset, excluding participant ID
-# exposures <- colnames(data)[which(colnames(data) != "participant_ID")]
+# exposures <- colnames(mult)[which(colnames(mult) != "participant_ID")]
 
 # # or if you have a few columns to exclude, do it this way
-# exposures <- colnames(data)[which(colnames(data) %nin% c("participant_ID",
+# exposures <- colnames(mult)[which(colnames(mult) %nin% c("participant_ID",
 #                                                          "old_outcome",
 #                                                          "unwanted_var"))]
 
+# recode as factor
+for(i in seq_along(mult)){
+    mult[[i]]$med_lastyr_binary_num <- 
+        factor(mult[[i]]$med_lastyr_binary_num, 
+               levels = c(0,1), 
+               ordered = FALSE)
+    
+   mult[[i]]$med_lastyr_binary_num <- 
+        relevel(mult[[i]]$med_lastyr_binary_num, ref = "0")
+}
+
+# recode as factor
+for(i in seq_along(mult)){
+    mult[[i]]$vit_lastyr_binary_num <- 
+        factor(mult[[i]]$vit_lastyr_binary_num, 
+               levels = c(0,1), 
+               ordered = FALSE)
+    
+   mult[[i]]$vit_lastyr_binary_num <- 
+        relevel(mult[[i]]$vit_lastyr_binary_num, ref = "0")
+}
 
 # # or else if you have a subset of vars in mind, then create list manually here
 exposures <- c(
     Cs(
         age,
-     #   ethnic_group,
-     #   med_lastyr_binary_num,  # must be factor
-     #   vit_lastyr_binary_num,  # must be factor
-     #   maritalstatus,
-     #   bmi_group,
-     #   physact_before,
-     #   income_before,
+        ethnic_group,
+        med_lastyr_binary_num, # must be factor
+        vit_lastyr_binary_num, # must be factor
+        maritalstatus,
+        bmi_group,
+        physact_before,
+        income_before,
         smoke_before,
-     #   contra_current_groupall,
-     #   cyclelength_before_group,
-     #   period_lengh_before_group,
-     #   heavyperiod_before,
-     #   cycle_irreg_before,
-     #   nbdeliveries,
-     #   vaccine_type,
-     #   vaccine_timing,
-     #   covid_group,
-     #   covid_tested,
-     #   vaccinated,
-     #   changesmenses_num,
-     #   lifesatchanges,
-     #   disease_before_endometriosis_num,
-     #   disease_before_pcos_num,
-     #   disease_before_underthyroid_num,
-     #   disease_before_overthyroid_num,
-     #   disease_before_uterpolyp_num,
-     #   disease_before_uterfibroid_num,
-     #   disease_before_intercystitis_num,
-     #   disease_before_eatingdisord_num,
-     #   liveuk,
+        contra_current_groupall,
+        cyclelength_before_group,
+        period_lengh_before_group,
+        heavyperiod_before,
+        cycle_irreg_before,
+        nbdeliveries,
+        vaccine_type,
+        vaccine_timing,
+        covid_group,
+        covid_tested,
+        vaccinated,
+        changesmenses_num,
+        lifesatchanges,
+        disease_before_endometriosis_num,
+        disease_before_pcos_num,
+        disease_before_underthyroid_num,
+        disease_before_overthyroid_num,
+        disease_before_uterpolyp_num,
+        disease_before_uterfibroid_num,
+        disease_before_intercystitis_num,
+        disease_before_eatingdisord_num,
+        liveuk,
         vaccine_changescycle_binary
     )
 )
-
 
 ## create function to run one-hot coding for dataset
 recode_dataset <- function(x) {
@@ -226,7 +168,6 @@ recode_dataset <- function(x) {
 recoded_data <- lapply(mult, recode_dataset)
 
 # check outcome coding just in case (needs to be factor)
-
 for(i in seq_along(recoded_data)){
     recoded_data[[i]]$vaccine_changescycle_binary <- 
         factor(recoded_data[[i]]$vaccine_changescycle_binary, 
@@ -234,14 +175,15 @@ for(i in seq_along(recoded_data)){
                ordered = FALSE)
     
    recoded_data[[i]]$vaccine_changescycle_binary <- 
-        relevel(recoded_data[[i]]$vaccine_changescycle_binary,   ref = "0")
+        relevel(recoded_data[[i]]$vaccine_changescycle_binary, ref = "0")
 }
 
 ### create model matrix
 
 # split into training/test sets
 set.seed(2345) # set the seed to make partition reproducible
-train.rows <- createDataPartition(y = recoded_data[[1]]$vaccine_changescycle_binary, # create partition with same proportion of outcome variable
+# create partition with same proportion of outcome variable
+train.rows <- createDataPartition(y = recoded_data[[1]]$vaccine_changescycle_binary, 
                                   p = 0.70, # 70% random subsample for training
                                   list = FALSE) # do not return data as list
 
@@ -249,32 +191,29 @@ train.rows <- createDataPartition(y = recoded_data[[1]]$vaccine_changescycle_bin
 recoded_data_train <- lapply(recoded_data, function(x) x[train.rows, ])
 recoded_data_test <- lapply(recoded_data, function(x) x[-train.rows, ])
 
+# set response var (try first in just one imputed dataset before running across all imputed datasets)
 y <- recoded_data_train[[1]]$vaccine_changescycle_binary 
 y_rep <- recoded_data_test[[1]]$vaccine_changescycle_binary
 
-# make model matrix of exposures
+# make model matrix of exposures (try first in just one imputed dataset before running across all imputed datasets)
 x <- model.matrix(recoded_data_train[[1]]$vaccine_changescycle_binary ~ .  -1, recoded_data_train[[1]])
 x_rep <- model.matrix(recoded_data_test[[1]]$vaccine_changescycle_binary ~ . - 1, recoded_data_test[[1]])
 
 ```
 
-
-# LASSO Cross-validation -------------------------------------------------------------------
+# LASSO Cross-validation
 
 ```{r lassocrossvalid}
-
 # set foldid so that folds are exactly the same across all alpha CV attempts
 set.seed(3456)
 foldid <- sample(1:10, # 10 folds
-                 size = nrow(recoded_data[[1]]), 
+                 size = nrow(recoded_data_train[[1]]), 
                  replace = TRUE)
-
 ## LASSO
-
 set.seed(3456)
 cv.fit.lasso <- 
     cv.glmnet(x = x,
-              y = y ,
+              y = y,
               family = "binomial", 
               type.measure = "auc",
               maxit = 1000, # 1,000 iterations
@@ -283,89 +222,51 @@ cv.fit.lasso <-
               trace.it = 1, # show progress bar
               alpha = 1 # LASSO
     ) 
-
 ```
 
+# Training set AUC 
 
-# AUC -------------------------------------------------------------------
 ```{r AUC}
-
 # get max AUC from the training set
 max(cv.fit.lasso$cvm)
-
 # plot AUC values for different lambdas
 plot(cv.fit.lasso)
 ```
 
-# Prediction -------------------------------------------------------------------
-```{r pred}
+# Prediction 
 
+```{r pred}
 # function to loop optimal lambda/alpha from all 5 cross-validation attempts to get coefficients
 # get predicted values from lasso
 pred <- predict(cv.fit.lasso, 
-                newdata = x_rep, 
+                newx = x_rep, 
                 type = "response",
                 s = cv.fit.lasso$lambda.1se, # optimized lambda value. You can also try "cv.fit.lasso$lambda.min"
                 alpha = 1,
                 exact = FALSE)
 ```
 
-# AUC -------------------------------------------------------------------
-```{r AUC2}
+# Test set AUC
 
+```{r AUC2}
 # get AUC from test set
-auc.lasso <-  auc(recoded_data_rep$outcome, pred)
+auc.lasso <- auc(y_rep, pred)
 ```
 
+# Coefficients
 
-
-
-# Coefficients -------------------------------------------------------------------
 ```{r coeff}
 # get coefficients from best lasso model
 set.seed(3456)    
 coefs <- coef(cv.fit.lasso, 
               newdata = x_rep, 
-              s = final_lambda, # optimized lambda value
-              alpha = cv.fit.lasso$lambda.1se, # optimized lambda value. You can also try "cv.fit.lasso$lambda.min"
+              s = cv.fit.lasso$lambda.1se, # optimized lambda value
+              alpha = 1, 
               exact = FALSE)
-
-
 # make dataframe for coefficients
 coefficients <- as.data.frame(as.matrix(coefs))
-
 # make rownames a column of exposure names
 coefficients$Exposure <- rownames(coefficients)
-
 # subset to only rows where coefficient wasn't shrunk to 0
 coefficients <- coefficients[which(coefficients$Coefficient != 0), ]
-```
-
-
-
-# Elastic net cross-validation -------------------------------------------------------------------
-```{r elastcrossvalid}
-
-# set vector of alpha values to test between 0-1
-alpha_grid <- seq(0, 1, 0.1)
-
-# create list for all model fits
-cv.fit.enet <- as.list(seq(alpha_grid))
-
-# run elastic net (loops the glmnet model and each time tries a new value for alpha using the alpha_grid)
-for (k in seq(cv.fit)) {
-    set.seed(3456)
-    cv.fit.enet[[k]] <- 
-        cv.glmnet(x = x,
-                  y = y,
-                  family = "binomial", 
-                  type.measure = "auc",
-                  maxit = 1000, # 1,000 iterations
-                  nfolds = 10, # 10-fold CV
-                  foldid = foldid,
-                  trace.it = 1, T# show progress bar
-                  alpha = alpha_grid[[k]] # elastic net
-        )
-}
-
 ```
