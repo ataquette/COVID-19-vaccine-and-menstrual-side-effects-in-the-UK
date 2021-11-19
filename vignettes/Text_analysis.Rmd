@@ -84,12 +84,12 @@ library(rio)
 
 ### data load
 ```{r tidytext cleaner}
-#Use this to import the dataset
-df_raw <-read.table("data/dataextanalysis.text")
+df_raw <-import(here("data","data_covid19vaccine_menstrualcycles_uk_text.Rdata"))
 
-#df_raw <- r
+
 # Save raw version 
 df_clean<-df_raw
+head(df_clean)
 
 ```
 
@@ -200,8 +200,12 @@ df_listoftoosoon$toosoon<-df_listoftoosoon$trimother
 df_listoftoosoon$toosoon <- na_if(df_listoftoosoon$toosoon, "1")
 df_listoftoosoon$toosoon[df_listoftoosoon$toosoon =="0"]<-"unsure"
 
-#Export too soon as csv to check it works
-#write.xlsx(df_listoftoosoon, "~/OneDrive - Nexus365/DPhil/PeriodsCOVID/data/IDtoosoon.xlsx", sheetName = "toosoon",row.names = TRUE, append = FALSE)
+
+table(df_listoftoosoon$toosoon) # n = 369 for too soon to tel
+
+# export
+export(df_listoftoosoon,here("data","df_listoftoosoon.Rdata"))
+
 
 ```
 
@@ -329,7 +333,11 @@ graph_topbiLEM<-bigrams_united %>%
 ### Figure 
 ```{r tidytext bigrams}
 graph_topuniandbi<-grid.arrange (graph_topuniLEM,graph_topbiLEM, ncol=2)
-ggsave(graph_topuniandbi,filename="unibigram.pdf", height=5, width=10)
+ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
+
+
+
+
 ```
 
 ## 2. Co-occurence
@@ -337,7 +345,7 @@ ggsave(graph_topuniandbi,filename="unibigram.pdf", height=5, width=10)
 # Creating Co occurence dataset
 df_wide_words <-df_clean %>%  
   mutate(section = id) %>%
-    filter(section > 0) %>%
+#    filter(section > 0) %>%
   unnest_tokens(lemword, vaccine_changescycle_othertxt) %>%
   filter(!lemword %in% undersirablewords$word) %>%
   filter(!lemword %in% stop_words$word)
@@ -356,7 +364,7 @@ df_wide_words<-df_wide_words %>%
 # count words co-occuring within sections
 library(widyr)
 word_pairs <- df_wide_words %>%
-  pairwise_count(lemword, section, sort = TRUE)
+  dplyr::pairwise_count(lemword, section, sort = TRUE)
 
 # filter out uncommon words
 word_cors <- df_wide_words %>%
@@ -401,7 +409,6 @@ graph_correlated_wordsfiltered<-filteredword_cors %>%
 #### Correlation matrix
 
 ```{r corrmat}
-
 # Filter uncommon words, but less
 word_cors <- df_wide_words %>%
   group_by(lemword) %>%
