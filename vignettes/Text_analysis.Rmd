@@ -179,8 +179,8 @@ do not know yet, only just had it.$)|(^had vaccine today$)|(^vaccinated twenty t
 #Combine all the too soon to tells into 1 variable 
 df_clean<-select(df_clean, vaccine_changescycle_othertxt, toosoon,toosooner,toosoonest,everything()) 
 table(df_clean$toosoon) #39 unsure
-table(df_clean$toosooner) #249 unsure
-table(df_clean$toosoonest) #83 unsure
+table(df_clean$toosooner) #288 unsure
+table(df_clean$toosoonest) #92 unsure
 
 #Make a variable that puts the text box in, but removing the 'unsure' bits and replacing with NA. 
 df_clean$trimother<-df_clean$vaccine_changescycle_othertxt
@@ -342,6 +342,8 @@ ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
 
 ## 2. Co-occurence
 ```{r tidytext co occurence}
+
+df_clean$id<-as.character(df_clean$id)
 # Creating Co occurence dataset
 df_wide_words <-df_clean %>%  
   mutate(section = id) %>%
@@ -349,6 +351,7 @@ df_wide_words <-df_clean %>%
   unnest_tokens(lemword, vaccine_changescycle_othertxt) %>%
   filter(!lemword %in% undersirablewords$word) %>%
   filter(!lemword %in% stop_words$word)
+
 
 #lemmatise all words except spotting      
 df_wide_words$lemword<-lemmatize_strings(df_wide_words$lemword, dictionary = 
@@ -364,7 +367,7 @@ df_wide_words<-df_wide_words %>%
 # count words co-occuring within sections
 library(widyr)
 word_pairs <- df_wide_words %>%
-  dplyr::pairwise_count(lemword, section, sort = TRUE)
+  pairwise_count(lemword, section, sort = TRUE)
 
 # filter out uncommon words
 word_cors <- df_wide_words %>%
