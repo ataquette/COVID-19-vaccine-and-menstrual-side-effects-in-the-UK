@@ -344,6 +344,7 @@ ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
 ```{r tidytext co occurence}
 
 df_clean$id<-as.character(df_clean$id)
+
 # Creating Co occurence dataset
 df_wide_words <-df_clean %>%  
   mutate(section = id) %>%
