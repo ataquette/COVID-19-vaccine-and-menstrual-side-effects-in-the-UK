@@ -53,7 +53,7 @@ pacman::p_load(
 ```{r dataload}
 
 # list of 5 imputed datasets
-multfin<-import(here("data","data_covid19vaccine_menstrualcycles_uk_imputed.Rda")) # imputed list
+multfin<-import(here("data","data_covid19vaccine_menstrualcycles_uk_list.Rda")) # imputed list
 
 # original data used for imputation
 dataor<-import(here("data","data_covid19vaccine_menstrualcycles_uk_original.Rda")) # original dataset of vaccinated people
@@ -262,7 +262,140 @@ table%>%
 table
   
 
+# plot attempt
+library(dplyr)
 
+all_models2$term
+x <- data.frame(
+    symptoms=c(rep("Age", 1), 
+             rep("Ethnic Group: Other", 1),
+            rep("Medication Use: Yes", 1),
+            rep("Vitamins Use: Yes", 1),
+            rep("Marital status:widowed/sep", 1),
+            rep("Marital status:Nevermarried/partnered ", 1),
+  rep("Gender: Other", 1) ,
+  rep("BMI:Obese", 1) ,
+    rep("BMI:Overweight", 1) ,
+    rep("BMI:Underweight", 1) ,
+   rep("Physical activity:60-90 minutes", 1) ,
+   rep("Physical activity:90-120 minutes", 1) ,
+   rep("Physical activity:<30 minutes", 1) ,
+   rep("Physical activity:>120 minutes", 1) ,
+  rep("Income: £13,682 to £22,140 ", 1) ,
+    rep("Income: £22,140 to £29,254 ", 1) ,
+    rep("Income: £39,397 to £76,144", 1) ,
+    rep("Income: <£13,682", 1) ,
+    rep("Income: >£76,144", 1) ,
+    rep("Smoking: Past smoker", 1) ,
+   rep("Smoking: current smoker", 1) ,
+    rep("Contraception: Combined", 1) ,
+   rep("Contraception: Copper IUD", 1) ,
+   rep("Contraception: Other", 1) ,
+   rep("Contraception: Progestin", 1) ,
+   rep("Contraception: Sterilization", 1) ,
+  
+    rep("Cycle length: Short cycles", 1) ,
+  rep("Cycle length: Long cycles", 1) ,
+  rep("Cycle length: Irregular", 1) ,
+     rep("Period length", 6),
+  rep("Heavy Bleeding", 1),
+  rep("Irregular cycles", 3) ,
+   rep("Nb deliveries", 3),
+     rep("Vaccine type",1),
+   rep("Vaccine timing", 3) ,
+    rep("COVID group", 2) ,
+      rep("COVID tested", 2) ,
+        rep("Nb shots",  1) ,
+    rep("Changes in menstrual cycles over the last year", 1),
+      rep("Life satisfaction changes", 1) ,
+   rep("Endometriosis", 1),
+   rep("PCOS", 1),
+   rep("Underactive Thyroid", 1),
+   rep("Overactive Thyroid", 1) ,
+   rep("Uterine Polyps", 1),
+   rep("Uterine Fibroids", 1),
+   rep("Inter cystitis", 1) ,
+   rep("Eating disorders", 1),
+  rep("Country of residence", 3) ,
+  rep("Education",3))
+ ,
+    OR=c(exp(all_models2$estimate)),
+    Lower=c(exp(all_models2$lowCI)),
+    Upper=c(exp(all_models2$highCI)),
+    Group=c(rep("Age", 1), 
+             rep("Ethnic Group", 1),
+            rep("Medication Use", 1),
+            rep("Vitamins Use", 1),
+            rep("Marital status", 2),
+  rep("Gender", 1) ,
+  rep("BMI", 3) ,
+   rep("Physical activity", 4) ,
+  rep("Income", 5) ,
+    rep("Smoking", 2) ,
+    rep("Contraception", 5) ,
+    rep("Cycle length", 3) ,
+     rep("Period length", 6),
+  rep("Heavy Bleeding", 1),
+  rep("Irregular cycles", 3) ,
+   rep("Nb deliveries", 3),
+     rep("Vaccine type",1),
+   rep("Vaccine timing", 3) ,
+    rep("COVID group", 2) ,
+      rep("COVID tested", 2) ,
+        rep("Nb shots",  1) ,
+    rep("Changes in menstrual cycles over the last year", 1),
+      rep("Life satisfaction changes", 1) ,
+   rep("Endometriosis", 1),
+   rep("PCOS", 1),
+   rep("Underactive Thyroid", 1),
+   rep("Overactive Thyroid", 1) ,
+   rep("Uterine Polyps", 1),
+   rep("Uterine Fibroids", 1),
+   rep("Inter cystitis", 1) ,
+   rep("Eating disorders", 1),
+  rep("Country of residence", 3) ,
+  rep("Education",3))
+)           
+                        
+                        
+
+
+
+library(RColorBrewer)
+# Define the number of colors you want
+nb.cols <- 67
+mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
+
+#
+
+plot<-x %>% 
+  ggplot(aes(x = OR, y=Group)) + 
+ 
+geom_rect(aes(xmin = 0, xmax = 5,
+               ymin = -Inf, ymax = Inf, fill = symptoms)) +
+  geom_errorbarh(aes(xmin = Lower, xmax = Upper)) +
+  geom_point(aes(colour = Group, shape = symptoms), size = 5 ) +
+  geom_vline(aes(xintercept = 1), linetype = 2, col="red") +
+  scale_shape_manual(values = rep(15, 50)) +
+  scale_fill_manual(values = mycolors) +
+  scale_x_log10() +
+  coord_cartesian(xlim = c(0.1, 4)) +
+  facet_grid(symptoms~., switch = "y") +
+  theme_bw() +
+  theme(legend.position = "none")+
+  theme(panel.spacing.y = unit(0, "points"),
+        panel.border = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.length.y = unit(0, "points"),
+        strip.text.y.left = element_text(angle = 0),
+        strip.background.y = element_blank(),
+        strip.placement = "outside",
+        axis.line = element_line()
+      
+        )
+
+
+plot+guides(colour = TRUE,shape=FALSE)
 ```
 
 We found that smoking behaviour (current smoker), contraceptive type, COVID-19 history and cycle changes over the last year are associated with the odds of reporting menstrual cycles changes.

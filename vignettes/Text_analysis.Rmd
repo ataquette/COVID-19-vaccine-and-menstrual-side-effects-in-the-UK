@@ -1,22 +1,21 @@
 ---
-title: "Text analysis SSI"
+title: "Text analysis"
 author: "Gabriella"
 date: "11/10/2021"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
 ```
 
 # Script
 
 
-Prior to analysis, text processing was performed, and a cleaning function was created to clean the text (the script is open access and can be found on GitHub [link]). The function created was adapted from code written in the '*textclean*' package [@rinker2018] which provides tools to clean and process text. In this function, numbers were converted to text form, abbreviations were replaced with full words (using the '*qdap'* abbreviation dictionary [@rinker2018a]). Text was
-tokenized and analysed using *tidytext* package which provides access to stopword lexicons. Tokenizing the data makes words lower case, strips punctuation and splits it into a one word per row format (or two adjacent words, a bigram). We omitted "spotting" from the lemmatizing because people talked about "blood spotting" and an acne "spot".  Stopwords were removed, and we supplemented the stop word list with our own list of undesirable words. These lists removed commonly used words that did not add meaning to the sentences. We also lemmatized words so that words derived from others, such as "long" and "longer" were grouped by their stem version (long), this was done using a look up dictionary
+Prior to analysis, text processing was performed, and a cleaning function was created to clean the text. The function created was adapted from code written in the '*textclean*' package which provides tools to clean and process text. In this function, numbers were converted to text form, abbreviations were replaced with full words (using the '*qdap'* abbreviation dictionary. Text was tokenized and analysed using *tidytext* package which provides access to stopword lexicons. Tokenizing the data makes words lower case, strips punctuation and splits it into a one word per row format (or two adjacent words, a bigram). We omitted "spotting" from the lemmatizing because people talked about "blood spotting" and an acne "spot".  Stopwords were removed, and we supplemented the stop word list with our own list of undesirable words. These lists removed commonly used words that did not add meaning to the sentences. We also lemmatized words so that words derived from others, such as "long" and "longer" were grouped by their stem version (long), this was done using a look up dictionary
 in the lemmatize_strings function from the *textstem* package. This uses Mechura's (2016) English lemmatization list available from the lexicon package. We manually create a variable called "too soon to tell", any responses that included statements such "as too soon to tell"," haven’t had my period yet since the vaccine" or "not due yet "were counted as "too soon to tell". 
 
 Many of the bigrams were pairs of common words like "the and, 'to be', so a second stage of stopword removal was applied. This was done using *tidyr* package separate() function, which splits a column into multiple based on a delimiter. This lets us separate it into two columns, “word1” and “word2”, at which point we can remove cases where either is a stop-word. Once the stop words and undesirable words were removed, bigrams were reunited using tidyr's unite() function to recombine the columns into one. 
@@ -79,22 +78,22 @@ library(tidyr)
 library(knitr)
 library(here)
 library(rio)
+library(Cairo)
 
 ```
 
 ### data load
-```{r tidytext cleaner}
+```{r data_load}
 df_raw <-import(here("data","data_covid19vaccine_menstrualcycles_uk_text.Rdata"))
-
 
 # Save raw version 
 df_clean<-df_raw
-head(df_clean)
+#head(df_clean)
 
 ```
 
-### cleaning
-```{r tidytext clean}
+### data cleaning
+```{r data_cleaning}
 #Data frame is df_clean
 
 # Check text for potential issues
@@ -150,6 +149,7 @@ cleaning <- function(x) {
 df_clean$vaccine_changescycle_othertxt<- cleaning(df_clean$vaccine_changescycle_othertxt)
 
 ```
+
 
 ## Calculate and remove data including  "Too soon to tell"
 ```{r cleaning streamlined text}
@@ -209,9 +209,9 @@ export(df_listoftoosoon,here("data","df_listoftoosoon.Rdata"))
 
 ```
 
-## 1. Commonality of words
+## Text analysis
 ### Unigrams
-```{r tidytext unigrams}
+```{r  unigrams}
 #Set colours for graphs 
 vaccinetype <- c("#002147", "#8B3A3A")
 contraception<- c("#D02090", "#9AC0CD", "#458B00", "#436EEE")
@@ -281,7 +281,7 @@ graph_topuniLEM<-df_token %>%
 ```
 
 ### Bigrams
-```{r tidytext bigramss}
+```{r bigrams}
 
 ############### Bigrams ###########
 
@@ -331,7 +331,7 @@ graph_topbiLEM<-bigrams_united %>%
 ```
 
 ### Figure 
-```{r tidytext bigrams}
+```{r  fig}
 graph_topuniandbi<-grid.arrange (graph_topuniLEM,graph_topbiLEM, ncol=2)
 ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
 
@@ -340,15 +340,15 @@ ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
 
 ```
 
-## 2. Co-occurence
-```{r tidytext co occurence}
+### Co-occurence
+```{r co_occurence}
 
 df_clean$id<-as.character(df_clean$id)
 
 # Creating Co occurence dataset
 df_wide_words <-df_clean %>%  
   mutate(section = id) %>%
-#    filter(section > 0) %>%
+    filter(section > 0) %>%
   unnest_tokens(lemword, vaccine_changescycle_othertxt) %>%
   filter(!lemword %in% undersirablewords$word) %>%
   filter(!lemword %in% stop_words$word)
@@ -367,8 +367,7 @@ df_wide_words<-df_wide_words %>%
 
 # count words co-occuring within sections
 library(widyr)
-word_pairs <- df_wide_words %>%
-  pairwise_count(lemword, section, sort = TRUE)
+
 
 # filter out uncommon words
 word_cors <- df_wide_words %>%
@@ -408,15 +407,13 @@ graph_correlated_wordsfiltered<-filteredword_cors %>%
   labs(y="Phi Coefficient", x="Correlated Words", title = "Highest Correlated Words")
 
 ```
-
-
-#### Correlation matrix
+### Correlation matrix
 
 ```{r corrmat}
 # Filter uncommon words, but less
 word_cors <- df_wide_words %>%
   group_by(lemword) %>%
-  filter(n() >= 10) %>%
+  filter(n() >= 15) %>%
   pairwise_cor(lemword, section, sort = TRUE)
 
 #Make two datasets to use for this: 
@@ -440,7 +437,7 @@ M<-get.adjacency(mygraph, sparse = FALSE, attr='correlation')
 # Plot figure
 library(corrplot)
 
-pdf(file="coorplot.pdf",width=10,height=10)
+pdf(file="Figure5.pdf",width=10,height=10)
 
 corrplot(M, type = 'lower', order = 'hclust', tl.col = 'black',  cl.ratio = 0.3, tl.srt = 10, col = brewer.pal(n = 10, name = 'Spectral'))    
 dev.off()
@@ -456,10 +453,9 @@ corrplot(M, type = 'lower', order = 'hclust', tl.col = 'black',  cl.ratio = 0.3,
 
 
 
-#### Network
+### Network
 
-
-```{r network of correlation}
+```{r network}
 options(ggrepel.max.overlaps = 100) # so that all labels are represented
 
 #Again filter uncommon words, but less
@@ -482,31 +478,7 @@ counts <- dplyr::count(df_token, lemword, sort = TRUE)
 # Join counts df to my word_cors df
 attempteddf<-left_join(word_cors, counts,by=c(item1="lemword"))
 
-# Create a modification where you can create the two dataframes for edge and vertex information separately, which should give you the control you might need.
-#Make edges
-edge_data <- attempteddf %>% 
-  filter(correlation > 0.1 ) %>%
-  select(item1, item2, correlation,group)
-
-# Make nodes
-node_data <- attempteddf %>% 
-  select(item1, n) %>%
-  # Using distinct to keep only the first row when word1 is duplicated to avoid error below
-  distinct(item1, .keep_all = TRUE)
-#Make graph
-g <- graph_from_data_frame(edge_data, vertices = node_data)
-# Error in graph_from_data_frame(edge_data, directed = TRUE, vertices = node_data) : 
-
-# Duplicate vertex names
-g_low<-g %>%
-  ggraph(layout = "fr") +
-  geom_edge_link(aes(edge_alpha = correlation, edge_width = correlation)) +
-  # Now the number column is accessible!
-  geom_node_point(aes(size = n))+
-  geom_node_text(aes(label = name, size=15), repel = TRUE)+
-            #     point.padding = unit(0.4, "lines"))+
-  scale_size(range=c(4,12),guide = "none")
-
+# Graph 1
 
 
 edge_data <- attempteddf %>% 
@@ -520,23 +492,21 @@ node_data <- attempteddf %>%
 g <- graph_from_data_frame(edge_data, vertices = node_data) 
 
 g1<-g %>%
-  ggraph(layout = "fr") +
-  geom_edge_link(aes(edge_alpha = correlation, edge_width = correlation), edge_colour = "lightgrey") +
+  ggraph(layout = "nicely") +
+  geom_edge_link(aes(edge_alpha = correlation, edge_width = correlation), color="grey") +
   # Now the number column is accessible!
-  geom_node_point(aes(size = n))+
+  geom_node_point(aes(size = n*0.01, color=n))+
   geom_node_text(aes(label = name), repel = TRUE)+
             #     point.padding = unit(0.4, "lines"))+
-  scale_size(range=c(5,8),guide = "none")+
-  theme_graph()
-
+  scale_size(range=c(4,10),guide = "none")+
+    theme_graph()
 
 # high res plot
-pdf("socialnetwork.pdf")
+library(Cairo)
+CairoPDF("Figure6.pdf", height=8,width=12)
 g1 # Make plot
 dev.off()
 
-
-g1
 
 ```
 
