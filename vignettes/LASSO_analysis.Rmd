@@ -228,7 +228,7 @@ cv.fit.lasso <-
 
 ```{r AUC}
 # get max AUC from the training set
-print(paste("Area under the curve:", round(max(cv.fit.lasso$cvm), digits = 2)))
+print(paste("Area under the curve:", round(max(cv.fit.lasso$cvm), digits = 3)))
 # plot AUC values for different lambdas
 plot(cv.fit.lasso)
 ```
@@ -252,22 +252,4 @@ pred <- predict(cv.fit.lasso,
 # get AUC from test set
 auc.lasso <- auc(y_rep, pred)
 auc.lasso
-```
-
-# Coefficients
-
-```{r coeff}
-# get coefficients from best lasso model
-set.seed(3456)    
-coefs <- coef(cv.fit.lasso, 
-              newdata = x_rep, 
-              s = cv.fit.lasso$lambda.1se, # optimized lambda value
-              alpha = 1, 
-              exact = FALSE)
-# make dataframe for coefficients
-coefficients <- as.data.frame(as.matrix(coefs))
-# make rownames a column of exposure names
-coefficients$Exposure <- rownames(coefficients)
-# subset to only rows where coefficient wasn't shrunk to 0
-coefficients <- coefficients[which(coefficients$Coefficient != 0), ]
 ```
