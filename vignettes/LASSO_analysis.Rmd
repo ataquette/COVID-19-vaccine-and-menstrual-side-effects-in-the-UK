@@ -25,7 +25,9 @@ pacman::p_load(
     mlr,
     Hmisc,
     caret,
-    pROC
+    pROC,
+    rio,
+    here
 )
 ```
 
@@ -33,7 +35,7 @@ pacman::p_load(
 
 ```{r dataload}
 # list of 5 imputed datasets
-multfin <- import(here("data", "data_covid19vaccine_menstrualcycles_uk_imputed.Rda")) # imputed list
+multfin <- import(here("data", "data_covid19vaccine_menstrualcycles_uk_list.Rda")) # imputed list
 ```
 
 ## manip variables
@@ -231,6 +233,8 @@ cv.fit.lasso <-
 print(paste("Area under the curve:", round(max(cv.fit.lasso$cvm), digits = 3)))
 # plot AUC values for different lambdas
 plot(cv.fit.lasso)
+
+
 ```
 
 # Prediction 

@@ -333,7 +333,7 @@ graph_topbiLEM<-bigrams_united %>%
 ### Figure 
 ```{r  fig}
 graph_topuniandbi<-grid.arrange (graph_topuniLEM,graph_topbiLEM, ncol=2)
-ggsave(graph_topuniandbi,filename="Figure4.pdf", height=5, width=10)
+ggsave(graph_topuniandbi,filename="Figure5.pdf", height=5, width=10)
 
 
 
@@ -407,13 +407,14 @@ graph_correlated_wordsfiltered<-filteredword_cors %>%
   labs(y="Phi Coefficient", x="Correlated Words", title = "Highest Correlated Words")
 
 ```
+
 ### Correlation matrix
 
 ```{r corrmat}
 # Filter uncommon words, but less
 word_cors <- df_wide_words %>%
   group_by(lemword) %>%
-  filter(n() >= 15) %>%
+  filter(n() >= 10) %>%
   pairwise_cor(lemword, section, sort = TRUE)
 
 #Make two datasets to use for this: 
@@ -437,7 +438,7 @@ M<-get.adjacency(mygraph, sparse = FALSE, attr='correlation')
 # Plot figure
 library(corrplot)
 
-pdf(file="Figure5.pdf",width=10,height=10)
+pdf(file="Figure6.pdf",width=10,height=10)
 
 corrplot(M, type = 'lower', order = 'hclust', tl.col = 'black',  cl.ratio = 0.3, tl.srt = 10, col = brewer.pal(n = 10, name = 'Spectral'))    
 dev.off()
@@ -482,7 +483,7 @@ attempteddf<-left_join(word_cors, counts,by=c(item1="lemword"))
 
 
 edge_data <- attempteddf %>% 
-  filter(correlation > 0.1) %>%
+  filter(correlation > 0.15) %>%
   select(item1, item2, correlation)
 node_data <- attempteddf %>% 
   select(item1, n) %>%
@@ -503,7 +504,7 @@ g1<-g %>%
 
 # high res plot
 library(Cairo)
-CairoPDF("Figure6.pdf", height=8,width=12)
+CairoPDF("Figure7.pdf", height=8,width=12)
 g1 # Make plot
 dev.off()
 

@@ -83,8 +83,8 @@ tbl<-
             gender~ "Gender", 
             nbdeliveries~ "Number of deliveries",
             contra_current_groupall~ "Contraceptive use at the time of the survey", 
-            covid_group~ "Self-reported COVID status",
-            covid_tested~ "COVID status based on testing", 
+            covid_group~ "COVID status (type)",
+            covid_tested~ "COVID status (diagnosis)", 
             vaccinated~ "Number of vaccination shots", 
             vaccine_type~ "Vaccine type",
             vaccine_timing~ "Timing of 1st dose"
@@ -191,7 +191,7 @@ library(data.table)
 smry <-lapply(pool_univariate,
              summary,
               conf.int = TRUE,
-            conf.level = 0.95)
+            conf.level = 0.99)
 all_models <- rbindlist(smry)
 
 
@@ -261,68 +261,88 @@ table%>%
 # print
 table
   
+```
+
+### Plot OR and 99%CI univariable
+
+```{r plotuniv}
 
 # plot attempt
 library(dplyr)
 
-all_models2$term
+#all_models2$term
 x <- data.frame(
     symptoms=c(rep("Age", 1), 
              rep("Ethnic Group: Other", 1),
-            rep("Medication Use: Yes", 1),
-            rep("Vitamins Use: Yes", 1),
-            rep("Marital status:widowed/sep", 1),
-            rep("Marital status:Nevermarried/partnered ", 1),
-  rep("Gender: Other", 1) ,
-  rep("BMI:Obese", 1) ,
-    rep("BMI:Overweight", 1) ,
-    rep("BMI:Underweight", 1) ,
-   rep("Physical activity:60-90 minutes", 1) ,
-   rep("Physical activity:90-120 minutes", 1) ,
-   rep("Physical activity:<30 minutes", 1) ,
-   rep("Physical activity:>120 minutes", 1) ,
-  rep("Income: £13,682 to £22,140 ", 1) ,
-    rep("Income: £22,140 to £29,254 ", 1) ,
-    rep("Income: £39,397 to £76,144", 1) ,
-    rep("Income: <£13,682", 1) ,
-    rep("Income: >£76,144", 1) ,
-    rep("Smoking: Past smoker", 1) ,
-   rep("Smoking: current smoker", 1) ,
-    rep("Contraception: Combined", 1) ,
-   rep("Contraception: Copper IUD", 1) ,
-   rep("Contraception: Other", 1) ,
-   rep("Contraception: Progestin", 1) ,
-   rep("Contraception: Sterilization", 1) ,
-  
-    rep("Cycle length: Short cycles", 1) ,
-  rep("Cycle length: Long cycles", 1) ,
-  rep("Cycle length: Irregular", 1) ,
-     rep("Period length", 6),
-  rep("Heavy Bleeding", 1),
-  rep("Irregular cycles", 3) ,
-   rep("Nb deliveries", 3),
-     rep("Vaccine type",1),
-   rep("Vaccine timing", 3) ,
-    rep("COVID group", 2) ,
-      rep("COVID tested", 2) ,
-        rep("Nb shots",  1) ,
-    rep("Changes in menstrual cycles over the last year", 1),
-      rep("Life satisfaction changes", 1) ,
-   rep("Endometriosis", 1),
-   rep("PCOS", 1),
-   rep("Underactive Thyroid", 1),
-   rep("Overactive Thyroid", 1) ,
-   rep("Uterine Polyps", 1),
-   rep("Uterine Fibroids", 1),
-   rep("Inter cystitis", 1) ,
-   rep("Eating disorders", 1),
-  rep("Country of residence", 3) ,
-  rep("Education",3))
- ,
+             rep("Medication Use: Yes", 1),
+             rep("Vitamins Use: Yes", 1),
+             rep("Marital status: Widowed/sep", 1),
+             rep("Marital status: Never-married/Partnered ", 1),
+             rep("Gender: Other", 1) ,
+             rep("BMI: Obese", 1) ,
+             rep("BMI: Overweight", 1) ,
+             rep("BMI: Underweight", 1) ,
+             rep("Physical activity: 60-90 minutes", 1) ,
+             rep("Physical activity: 90-120 minutes", 1) ,
+             rep("Physical activity: <30 minutes", 1) ,
+             rep("Physical activity: >120 minutes", 1) ,
+             rep("Income: £13,682 to £22,140 ", 1) ,
+             rep("Income: £22,140 to £29,254 ", 1) ,
+             rep("Income: £39,397 to £76,144", 1) ,
+             rep("Income: <£13,682", 1) ,
+             rep("Income: >£76,144", 1) ,
+             rep("Smoking: Past smoker", 1) ,
+             rep("Smoking: Current smoker**", 1) ,
+             rep("Contraception: Combined***", 1) ,
+             rep("Contraception: Copper IUD", 1) ,
+             rep("Contraception: Other", 1) ,
+             rep("Contraception: Progestin", 1) ,
+             rep("Contraception: Sterilization", 1) ,
+             rep("Cycle length pre-pand: Short cycles", 1) ,
+             rep("Cycle length pre-pand: Long cycles", 1) ,
+             rep("Cycle length pre-pand: Irregular", 1) ,
+             rep("Period length pre-pand: <4 days", 1),
+             rep("Period length pre-pand: 4 days", 1),
+             rep("Period length pre-pand: 6 days", 1),
+             rep("Period length pre-pand: 7 days", 1),
+             rep("Period length pre-pand: >7 days", 1),
+             rep("Period length pre-pand: Irregular", 1),
+             rep("Heavy Bleeding", 1),
+             rep("Irregular cycles pre-pand: 2-5 days", 1) ,
+             rep("Irregular cycles pre-pand: >5 days", 1) ,
+             rep("Irregular cycles pre-pand: No periods", 1) ,
+             rep("Nb deliveries :1", 1),
+             rep("Nb deliveries: 2", 1),
+             rep("Nb deliveries: 3+", 1),
+             rep("Vaccine type: Pfizer-BioNTech",1),
+             rep("Vaccine timing: Feb 21", 1) ,
+             rep("Vaccine timing: Jan 21", 1) ,
+             rep("Vaccine timing: March 21", 1) ,
+             rep("COVID group: COVID + long***", 1) ,
+             rep("COVID group: COVID + short***", 1) ,
+             rep("COVID tested: Self-diagnosed +***", 1) ,
+             rep("COVID tested: Tested  +**", 1) ,
+             rep("Nb shots: 2 shots",  1) ,
+             rep("Changes in menstrual cycles over the last year***", 1),
+             rep("Life satisfaction changes", 1) ,
+             rep("Endometriosis", 1),
+             rep("PCOS", 1),
+             rep("Underactive Thyroid", 1),
+             rep("Overactive Thyroid", 1) ,
+             rep("Uterine Polyps", 1),
+             rep("Uterine Fibroids", 1),
+             rep("Inter cystitis", 1) ,
+             rep("Eating disorders", 1),
+             rep("Country of residence: Northern Ireland", 1) ,
+             rep("Country of residence: Scotland", 1) ,
+             rep("Country of residence: Wales", 1) ,
+             rep("Education: Secondary/Higher",1),
+              rep("Education: Primary/Secondary",1),
+              rep("Education: University",1)) ,
     OR=c(exp(all_models2$estimate)),
     Lower=c(exp(all_models2$lowCI)),
     Upper=c(exp(all_models2$highCI)),
-    Group=c(rep("Age", 1), 
+    Variables=c(rep("Age", 1), 
              rep("Ethnic Group", 1),
             rep("Medication Use", 1),
             rep("Vitamins Use", 1),
@@ -340,8 +360,8 @@ x <- data.frame(
    rep("Nb deliveries", 3),
      rep("Vaccine type",1),
    rep("Vaccine timing", 3) ,
-    rep("COVID group", 2) ,
-      rep("COVID tested", 2) ,
+    rep("COVID type", 2) ,
+      rep("COVID diagnosis", 2) ,
         rep("Nb shots",  1) ,
     rep("Changes in menstrual cycles over the last year", 1),
       rep("Life satisfaction changes", 1) ,
@@ -360,29 +380,28 @@ x <- data.frame(
                         
 
 
-
+# Set colours
 library(RColorBrewer)
 # Define the number of colors you want
 nb.cols <- 67
-mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
+mycolors <- colorRampPalette(brewer.pal(8, "Pastel1"))(nb.cols)
 
-#
-
+# Plot
 plot<-x %>% 
-  ggplot(aes(x = OR, y=Group)) + 
- 
+  ggplot(aes(x = OR, y=Variables)) + 
+  labs(y = "")+
 geom_rect(aes(xmin = 0, xmax = 5,
                ymin = -Inf, ymax = Inf, fill = symptoms)) +
   geom_errorbarh(aes(xmin = Lower, xmax = Upper)) +
-  geom_point(aes(colour = Group, shape = symptoms), size = 5 ) +
+  geom_point(aes(colour = Variables, shape = symptoms), size = 5 ) +
   geom_vline(aes(xintercept = 1), linetype = 2, col="red") +
-  scale_shape_manual(values = rep(15, 50)) +
+  scale_shape_manual(values = rep(15, 67)) +
   scale_fill_manual(values = mycolors) +
   scale_x_log10() +
   coord_cartesian(xlim = c(0.1, 4)) +
   facet_grid(symptoms~., switch = "y") +
   theme_bw() +
-  theme(legend.position = "none")+
+#  theme(legend.position = "none")+
   theme(panel.spacing.y = unit(0, "points"),
         panel.border = element_blank(),
         axis.text.y = element_blank(),
@@ -395,7 +414,14 @@ geom_rect(aes(xmin = 0, xmax = 5,
         )
 
 
-plot+guides(colour = TRUE,shape=FALSE)
+# control the legend
+plot+guides(shape=FALSE, size=FALSE, fill=FALSE,colour=guide_legend(ncol=1))
+
+
+# save the plot
+ggsave(filename="Figure2.jpeg", width = 30,  height = 30, units = "cm",dpi = 300)
+
+
 ```
 
 We found that smoking behaviour (current smoker), contraceptive type, COVID-19 history and cycle changes over the last year are associated with the odds of reporting menstrual cycles changes.
@@ -507,7 +533,7 @@ aucplot
 The plot displays for each variable, the AUC of the model with each of the 5 imputed datasets. Overall, AUCs are low and the univariable models have poor discriminative utility.
 
 ## Multivariable analyses
-### Models and output tables
+#### Models and output tables
 We take each exposure significant in the univariable models at q.value (e.g., FDR adjusted p.value) < 0.05 (Smoking, Menstrual cycles changes, COVID history and menstrual cycle changes over the last year). Based on DAGS (SI5), only COVID status and menstrual cycle changes should be adjusted for confounders.
 
 
@@ -657,7 +683,7 @@ names(all_models3)<-c("term","estimate","std.error","statistic","df","p.value","
 # create the table
 # change row names
 
-all_models3$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only","Sterilized","Self diagnosed +","Tested +")
+all_models3$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only","Sterilized","Long Covid","Acute Covid")
 
 # change column names
 table<-all_models3%>% filter (term!="(Intercept)")%>%
@@ -1027,7 +1053,7 @@ plot_OR<-ggcoef_compare(models,
 
 # Save plot
 
-ggsave(filename="Figure3.pdf", width = 30,  height = 20, units = "cm")
+ggsave(filename="Figure3.jpeg", width = 30,  height = 20, units = "cm", dpi=300)
 
 
 plot_OR
@@ -1091,7 +1117,7 @@ c<-plot(Effect("covid_group",modelgroup),
 
 ## Plot changes menses
 
-d<-plot(Effect("changesmenses_num",modelchangemense), 
+d<-plot(Effect("smoke_before",modelsmoking), 
      lines = list(multiline = T), 
      lty=0,
      lwd=6,
@@ -1100,7 +1126,7 @@ d<-plot(Effect("changesmenses_num",modelchangemense),
      lattice=list(strip=list(factor.names=FALSE)),
      confint = list(style = "auto"),
      response="",
-     xlab="Pandemic-related menstrual changes", 
+     xlab="Smoking behaviour", 
      ylab= "Predicted probability",
      main="")
 
@@ -1111,7 +1137,7 @@ plotpredictedvalues<-grid.arrange(a,b,c,d,ncol=2)
 plotpredictedvalues
 
 # save
-pdf(file='Figure2.pdf', width=15,height=8) # Open PDF device with specific file name
+pdf(file='Figure4.pdf', width=15,height=8) # Open PDF device with specific file name
 grid.arrange(a,b,c,d,ncol=2)
 dev.off() # Turn the PDF device off
 
@@ -1127,35 +1153,38 @@ grid.arrange(a,b,c,d,ncol=2)
 # 5. Analysis on complete cases
 ```{r summary tables}
 
+completerecords<-dataor %>% select(-c(toosoon)) %>% na.omit()
+dim(completerecords)
+
 # manipulation variables
-levels(dataor$smoke_before)[3]<-"Current Smoker"
-levels(dataor$smoke_before)[4]<-"Current Smoker"
-dataor$contra_current_groupall<-as.factor(dataor$contra_current_groupall)
-dataor$contra_current_groupall<-relevel(dataor$contra_current_groupall, ref = "None")
+levels(completerecords$smoke_before)[3]<-"Current Smoker"
+levels(completerecords$smoke_before)[4]<-"Current Smoker"
+completerecords$contra_current_groupall<-as.factor(completerecords$contra_current_groupall)
+completerecords$contra_current_groupall<-relevel(completerecords$contra_current_groupall, ref = "None")
 
 
 ## models--------------------------------------------------------
-model1<-glm(vaccine_changescycle_binary ~ smoke_before, data =dataor, family=binomial, model = TRUE)
+model1<-glm(vaccine_changescycle_binary ~ smoke_before, data =completerecords, family=binomial, model = TRUE)
 
 ## model 2----------------------------------------------------
 
-model2<-glm(vaccine_changescycle_binary ~ contra_current_groupall, data =dataor, family=binomial, model = TRUE)
+model2<-glm(vaccine_changescycle_binary ~ contra_current_groupall, data =completerecords, family=binomial, model = TRUE)
 
 ## model 3----------------------------------------------------
 
-model3<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+covid_tested, data =dataor, family=binomial, model = TRUE)
+model3<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+covid_tested, data =completerecords, family=binomial, model = TRUE)
 
 ## model 4----------------------------------------------------
 
-model4<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+covid_group, data =dataor, family=binomial, model = TRUE)
+model4<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+covid_group, data =completerecords, family=binomial, model = TRUE)
 
 ## model 5----------------------------------------------------
 
-model5<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+ changesmenses_num+covid_tested, data =dataor, family=binomial, model = TRUE)
+model5<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+ changesmenses_num+covid_tested, data =completerecords, family=binomial, model = TRUE)
 
 ## model 5----------------------------------------------------
 
-model6<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+ changesmenses_num+covid_group, data =dataor, family=binomial, model = TRUE)
+model6<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+ changesmenses_num+covid_group, data =completerecords, family=binomial, model = TRUE)
 
 
 ### model summary
