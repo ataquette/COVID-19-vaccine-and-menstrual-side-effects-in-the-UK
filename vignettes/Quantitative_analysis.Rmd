@@ -273,19 +273,19 @@ library(dplyr)
 #all_models2$term
 x <- data.frame(
     symptoms=c(rep("Age", 1), 
-             rep("Ethnic Group: Other", 1),
+             rep("Ethnicity: Other", 1),
              rep("Medication Use: Yes", 1),
              rep("Vitamins Use: Yes", 1),
-             rep("Marital status: Widowed/sep", 1),
+             rep("Marital status: Widowed/Separated", 1),
              rep("Marital status: Never-married/Partnered ", 1),
              rep("Gender: Other", 1) ,
              rep("BMI: Obese", 1) ,
              rep("BMI: Overweight", 1) ,
              rep("BMI: Underweight", 1) ,
-             rep("Physical activity: 60-90 minutes", 1) ,
-             rep("Physical activity: 90-120 minutes", 1) ,
-             rep("Physical activity: <30 minutes", 1) ,
-             rep("Physical activity: >120 minutes", 1) ,
+             rep("Physical activity pre-pand: 60-90 minutes", 1) ,
+             rep("Physical activity pre-pand: 90-120 minutes", 1) ,
+             rep("Physical activity pre-pand: <30 minutes", 1) ,
+             rep("Physical activity pre-pand: >120 minutes", 1) ,
              rep("Income: £13,682 to £22,140 ", 1) ,
              rep("Income: £22,140 to £29,254 ", 1) ,
              rep("Income: £39,397 to £76,144", 1) ,
@@ -307,7 +307,7 @@ x <- data.frame(
              rep("Period length pre-pand: 7 days", 1),
              rep("Period length pre-pand: >7 days", 1),
              rep("Period length pre-pand: Irregular", 1),
-             rep("Heavy Bleeding", 1),
+             rep("Heavy Bleeding pre-pand", 1),
              rep("Irregular cycles pre-pand: 2-5 days", 1) ,
              rep("Irregular cycles pre-pand: >5 days", 1) ,
              rep("Irregular cycles pre-pand: No periods", 1) ,
@@ -318,11 +318,11 @@ x <- data.frame(
              rep("Vaccine timing: Feb 21", 1) ,
              rep("Vaccine timing: Jan 21", 1) ,
              rep("Vaccine timing: March 21", 1) ,
-             rep("COVID group: COVID + long***", 1) ,
-             rep("COVID group: COVID + short***", 1) ,
-             rep("COVID tested: Self-diagnosed +***", 1) ,
-             rep("COVID tested: Tested  +**", 1) ,
-             rep("Nb shots: 2 shots",  1) ,
+             rep("COVID type: COVID + long***", 1) ,
+             rep("COVID type: COVID + short***", 1) ,
+             rep("COVID diagnosis: Self-diagnosed +***", 1) ,
+             rep("COVID diagnosis: Tested  +**", 1) ,
+             rep("Nb vaccine shots: 2 ",  1) ,
              rep("Changes in menstrual cycles over the last year***", 1),
              rep("Life satisfaction changes", 1) ,
              rep("Endometriosis", 1),
@@ -331,7 +331,7 @@ x <- data.frame(
              rep("Overactive Thyroid", 1) ,
              rep("Uterine Polyps", 1),
              rep("Uterine Fibroids", 1),
-             rep("Inter cystitis", 1) ,
+             rep("Interstitial cystitis", 1) ,
              rep("Eating disorders", 1),
              rep("Country of residence: Northern Ireland", 1) ,
              rep("Country of residence: Scotland", 1) ,
@@ -343,26 +343,26 @@ x <- data.frame(
     Lower=c(exp(all_models2$lowCI)),
     Upper=c(exp(all_models2$highCI)),
     Variables=c(rep("Age", 1), 
-             rep("Ethnic Group", 1),
+             rep("Ethnicity", 1),
             rep("Medication Use", 1),
             rep("Vitamins Use", 1),
             rep("Marital status", 2),
   rep("Gender", 1) ,
   rep("BMI", 3) ,
-   rep("Physical activity", 4) ,
+   rep("Physical activity pre-pand", 4) ,
   rep("Income", 5) ,
     rep("Smoking", 2) ,
     rep("Contraception", 5) ,
-    rep("Cycle length", 3) ,
-     rep("Period length", 6),
-  rep("Heavy Bleeding", 1),
-  rep("Irregular cycles", 3) ,
+    rep("Cycle length pre-pand", 3) ,
+     rep("Period length pre-pand", 6),
+  rep("Heavy Bleeding pre-pand", 1),
+  rep("Irregular cycles pre-pand", 3) ,
    rep("Nb deliveries", 3),
      rep("Vaccine type",1),
    rep("Vaccine timing", 3) ,
     rep("COVID type", 2) ,
       rep("COVID diagnosis", 2) ,
-        rep("Nb shots",  1) ,
+        rep("Nb vaccine shots",  1) ,
     rep("Changes in menstrual cycles over the last year", 1),
       rep("Life satisfaction changes", 1) ,
    rep("Endometriosis", 1),
@@ -371,7 +371,7 @@ x <- data.frame(
    rep("Overactive Thyroid", 1) ,
    rep("Uterine Polyps", 1),
    rep("Uterine Fibroids", 1),
-   rep("Inter cystitis", 1) ,
+   rep("Interstitial cystitis", 1) ,
    rep("Eating disorders", 1),
   rep("Country of residence", 3) ,
   rep("Education",3))
@@ -383,17 +383,17 @@ x <- data.frame(
 # Set colours
 library(RColorBrewer)
 # Define the number of colors you want
-nb.cols <- 67
-mycolors <- colorRampPalette(brewer.pal(8, "Pastel1"))(nb.cols)
+nb.cols <- 150
+mycolors <- colorRampPalette(brewer.pal(8, "BrBG        "))(nb.cols)
 
 # Plot
 plot<-x %>% 
   ggplot(aes(x = OR, y=Variables)) + 
   labs(y = "")+
-geom_rect(aes(xmin = 0, xmax = 5,
-               ymin = -Inf, ymax = Inf, fill = symptoms)) +
+# geom_rect(aes(xmin = 0, xmax = 5,
+#               ymin = -Inf, ymax = Inf, fill = Variables)) +
   geom_errorbarh(aes(xmin = Lower, xmax = Upper)) +
-  geom_point(aes(colour = Variables, shape = symptoms), size = 5 ) +
+  geom_point(aes(colour = Variables, shape = Variables), size = 5 ) +
   geom_vline(aes(xintercept = 1), linetype = 2, col="red") +
   scale_shape_manual(values = rep(15, 67)) +
   scale_fill_manual(values = mycolors) +
@@ -417,11 +417,11 @@ geom_rect(aes(xmin = 0, xmax = 5,
 # control the legend
 plot+guides(shape=FALSE, size=FALSE, fill=FALSE,colour=guide_legend(ncol=1))
 
-
 # save the plot
 ggsave(filename="Figure2.jpeg", width = 30,  height = 30, units = "cm",dpi = 300)
 
-
+# save the plot
+ggsave(filename="Figure2.pdf", width = 7,  height = 7, units = "cm",dpi = 300)
 ```
 
 We found that smoking behaviour (current smoker), contraceptive type, COVID-19 history and cycle changes over the last year are associated with the odds of reporting menstrual cycles changes.
