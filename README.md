@@ -25,6 +25,7 @@ The paper is hosted on the open science framework https://osf.io/pqxy2/
 First double click on the project icon. You can then run any script (quantitative analysis, text analysis or Lasso analysis)
 
 The folder contains 3 datasets
+
 - The original dataset of vaccinated individuals
 
 - A list containing 5 imputed datasets
@@ -32,6 +33,7 @@ The folder contains 3 datasets
 - A dataset containing the text entered by participants selection the option "Other" when asking about any menstrual changes post-COVID-19 vaccination.
 
 The folder contains 4 scripts
+
 - The Flow chart
 
 - Quantitative analysis
