@@ -4,6 +4,7 @@
 'COVID-19 vaccination and menstrual cycle changes: A United Kingdom (UK) retrospective case-control study' by  Alexandra Alvergne1,2*+, Gabriella Kountourides2*, M. Austin Argentieri2,3, Lisa Agyen4, Natalie Rogers4, Dawn Knight4, Gemma C Sharp5,6, Jacqueline A Maybin7, Zuzanna Olszewska2*
 
 * These authors contributed equally.
+
 1 ISEM, Univ Montpellier, CNRS, IRD, Montpellier, France
 2 School of Anthropology and Museum Ethnography, Oxford, UK
 3 Harvard/MGH Center on Genomics, Vulnerable Populations, and Health Disparities, Massachusetts General Hospital, Boston, USA
