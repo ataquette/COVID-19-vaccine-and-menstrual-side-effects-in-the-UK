@@ -1,0 +1,203 @@
+---
+title: "Complete_cases_analysis_Obj2"
+output: html_document
+date: "2022-10-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+
+
+# Set up 
+
+#### Packages load
+```{r packages, results='hide'}
+
+# Ensures the package "pacman" is installed
+if (!require("pacman")) install.packages("pacman")
+
+## Load
+library(pacman)
+pacman::p_load(
+     rio,         # import/export
+     here,        # file locator
+     purrr,       # iteration
+     dplyr,
+     gtsummary,
+     tidyverse,
+     flextable,
+     ggplot2,
+     forcats,
+     kableExtra,
+     flextable,
+     Hmisc,
+     pbapply,
+     mice,
+     GGally,
+     effects,
+     gridExtra,
+     grid,
+     lattice,
+     gtsummary,
+     dplyr,
+     DiagrammeR,
+     reporter,
+     modelsummary# to do the flowchart
+    
+)
+
+
+```
+
+#### Data load
+```{r dataload}
+data<-import(here("data","Complete_cases_obj2_OSF.Rda")) # 
+names(data)
+
+```
+
+
+# Analysis Normal Cycle Parameters 
+
+## Frequency 
+
+```{r frequency}
+# multinomial
+p_load(nnet) # for multinomial model
+
+m<-multinom(cyclelength_lastyr_group ~ covid_status_minimal  +cyclelength_before_group+contra_past12mo_groupall+disease_before_binary_num+age_scaled +bmi_group , data=data)
+
+
+
+# table
+library(modelsummary)
+library(kableExtra)
+library(gt)
+
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}",
+             output = "Frequency_CC.png")
+
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}")
+
+```    
+
+## Missed or stopped
+
+```{r stop, echo=TRUE}
+# Model
+m<-glm(stoppedperiods_lastyr ~ covid_status_minimal  +cyclelength_before_group+contra_past12mo_groupall+disease_before_binary_num+age_scaled +bmi_group  ,family=binomial(), data=data)
+
+# Table
+library(modelsummary)
+library(kableExtra)
+library(gt)
+
+modelsummary(m,
+             exponentiate = TRUE,
+             statistic = "{std.error} ({p.value}) {stars}")
+
+modelsummary(m,
+             exponentiate = TRUE,
+             statistic = "{std.error} ({p.value}) {stars}",
+            output = "Stopp_CC.png")
+
+
+```    
+
+
+## Cycle Regularity 
+
+
+```{r regularity}
+# models
+m<-multinom(cyclelength_irregular_lastyr_group ~ covid_status_minimal  +cycle_irreg_before_group+contra_past12mo_groupall+disease_before_binary_num+age_scaled+bmi_group   , data=data)
+
+# table
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}")
+
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}",
+             output = "Regularity_CC.png")
+```    
+
+
+
+
+## Period Duration 
+
+
+```{r duration}
+
+# Model
+m<-glm(period_lengh_lastyr_group ~ covid_status_minimal  +period_lengh_before_group+contra_past12mo_groupall+disease_before_binary_num+age_scaled + bmi_group ,family=binomial(), data=data)
+
+# Table
+modelsummary(m,
+             exponentiate = TRUE,
+             statistic = "{std.error} ({p.value}) {stars}")
+
+modelsummary(m,
+             exponentiate = TRUE,
+             statistic = "{std.error} ({p.value}) {stars}",
+             output = "Duration_CC.png")
+
+
+```    
+
+
+
+## Period Flow 
+
+```{r flow, echo=TRUE}
+
+# Model
+m<-multinom(changesperiod_lastyr ~   covid_status_minimal  +heavyperiod_before+contra_past12mo_groupall+disease_before_binary_num+age_scaled + bmi_group , data=data)
+
+# Table
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}")
+
+modelsummary(m,
+             exponentiate = TRUE,
+             shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}",
+             output = "Flow_CC.png")
+```
+
+
+
+## Interperiod bleeding
+
+```{r IPB }
+m<-multinom(changesspotting_lastyr ~ covid_status_minimal  +cyclelength_before_group+contra_past12mo_groupall+disease_before_binary_num+age_scaled + bmi_group , data=data)
+#
+modelsummary(m,
+             exponentiate = TRUE,
+            shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}")
+#
+modelsummary(m,
+             exponentiate = TRUE,
+            shape =  term ~ response + model,
+             statistic = "{std.error} ({p.value}) {stars}",
+            output = "IBI_CC.png")
+
+```
+
+
+
