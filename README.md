@@ -42,14 +42,9 @@ The data folder contains 4 datasets
 Note that for Objective 3, the data are not provided because they contain text. The data can be shared  at reasonable request.
 
 
-Each objective folder contains the scripts relevant for that objective
+Start with running the .RProj file and then run each script (you must have the data folder in your main folder than contains the .RProj file).
 
-- The Flow chart
-
-- Quantitative analysis
-
-
-As you run each script, figures and tables will be created and put in your folder.
+As you run each script, figures and tables will be created.
 
 # Use
 Please do cite us if you use the data for research.
