@@ -1,7 +1,7 @@
 # COVID-19 vaccines and menstrual cycle changes in the UK
 This folder contains the data and scripts needed to reproduce the paper 
 
-A retrospective case-control study on menstrual cycle changes following COVID-19 vaccination and disease 
+<b>A retrospective case-control study on menstrual cycle changes following COVID-19 vaccination and disease </b>
 
 Alexandra Alvergne1,2*+, Gabriella Kountourides2*, M. Austin Argentieri2,3, Lisa Agyen4, Natalie Rogers4, Dawn Knight4, Gemma C Sharp5,6, Jacqueline A Maybin7, Zuzanna Olszewska2*
 
