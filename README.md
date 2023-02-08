@@ -22,25 +22,26 @@
 The paper is hosted on the open science framework https://osf.io/pqxy2/
 
 # Instructions
-First double click on the project icon. You can then run any script (quantitative analysis, text analysis or Lasso analysis)
+First double click on the project icon. You can then run any script 
 
-The folder contains 3 datasets
+The data folder contains 4 datasets
 
-- The original dataset of vaccinated individuals
+- Objective 1: The original dataset of vaccinated individuals
 
-- A list containing 5 imputed datasets
+- Objective 1: A list containing 5 imputed datasets
 
-- A dataset containing the text entered by participants selection the option "Other" when asking about any menstrual changes post-COVID-19 vaccination.
+- Objective 2: The original dataset of vaccinated and unvaccinated individuals
 
-The folder contains 4 scripts
+- Objective 2: A list containing 5 imputed datasets
+
+Note that for Objective 3, the data are not provided because they contain text. The data can be shared  at reasonable request.
+
+Each objective folder contains the scripts relevant for that objective
 
 - The Flow chart
 
 - Quantitative analysis
 
-- Text analysis
-
-- LASSO analysis
 
 As you run each script, figures and tables will be created and put in your folder.
 
