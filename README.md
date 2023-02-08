@@ -39,10 +39,10 @@ The data folder contains 4 datasets
 
 - Objective 2: A list containing 5 imputed datasets
 
-Note that for Objective 3, the data are not provided because they contain text. The data can be shared  at reasonable request.
+Note that for Objective 3, the data are not provided because they contain text. The data can be shared at reasonable request.
 
 
-Start with running the .RProj file and then run each script (you must have the data folder in your main folder than contains the .RProj file).
+Start with running the .RProj file and then run each script (you must have the data folder in your main folder that contains the .RProj file).
 
 As you run each script, figures and tables will be created.
 
