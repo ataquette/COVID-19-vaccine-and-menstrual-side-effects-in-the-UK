@@ -1,0 +1,1110 @@
+---
+title: "Post COVID-19 vaccination menstrual disturbances in the UK"
+output:
+  html_document:
+    keep_md: true
+    css: styles.css
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+
+
+This script allows to reproduce the analysis of reports of menstrual disturbances following post-COVID-19 vaccination.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE )
+```
+
+
+
+# 1. Data preparation
+## Load packages
+```{r packages}
+
+# Ensures the package "pacman" is installed
+if (!require("pacman")) install.packages("pacman")
+# Packages available from CRAN
+##############################
+library(pacman)
+
+
+## Load
+pacman::p_load(
+     dplyr,
+     gtsummary,
+     rio,         # import/export
+     here,        # file locator
+     purrr,       # iteration
+     tidyverse,
+     flextable,
+     ggplot2,
+     forcats,
+     kableExtra,
+     flextable,
+     Hmisc,
+     pbapply,
+     mice,
+     GGally,
+     effects,
+     gridExtra,
+     grid,
+     lattice,
+     summarytools,  # descriptive
+     gtsummary, # tables
+     prLogistic  # https://www.scielo.br/j/aabc/a/4h3grwPFHKYvb8fCmnhS9cb/?format=pdf&lang=en
+)
+
+
+```
+
+## Load data
+```{r dataload}
+# list of 5 imputed datasets
+multfin<-import(here("data","Imputed_list_obj1_OSF.Rda")) # imputed list
+
+# original data used for imputation
+dataor<-import(here("data","Complete_cases_obj1_OSF.Rda")) # original dataset of vaccinated people
+
+# describe the data
+# view(dfSummary(dataor) # 
+```
+
+
+
+# 2. Descriptive Table
+```{r tabledesc, results='asis'}
+# create tbl objects
+theme_gtsummary_journal(journal = "jama")
+theme_gtsummary_compact()
+tbl<- 
+  tbl_summary(
+  select(dataor , age, bmi_group,contra_current_groupall, covid_group,covid_tested, vaccinated, vaccine_type,vaccine_timing),
+ label = list(age ~ "Age",
+            bmi_group~ "Body Mass Index",
+            contra_current_groupall~ "Contraceptive use at the time of the survey", 
+            covid_group~ "COVID status (type)",
+            covid_tested~ "COVID status (diagnosis)", 
+            vaccinated~ "Number of vaccination shots", 
+            vaccine_type~ "Vaccine type",
+            vaccine_timing~ "Timing of 1st dose"
+    
+                 )) 
+
+
+# beautify
+tblbest<-tbl %>%
+  modify_caption("Table 1. Summary of the sample characteristics") %>%
+  bold_labels()
+tblbest
+# convert gtsummary object into flextable to export to word
+#tblbest%>%
+#  as_flex_table()%>%
+#  flextable::save_as_docx(path = "Table1.docx") 
+
+
+```
+
+# 3. Logistic regression
+## Univariable analyses
+### Models and output table 
+```{r logistic_univariate, results='asis'}
+# set global R options
+pboptions(type = "timer", char = "=") # initialize progress bar
+
+# set list of exposures to test
+exposures <- c(
+    Cs(
+        age,
+        ethnic_group,
+        med_lastyr_binary_num,
+        vit_lastyr_binary_num,
+        maritalstatus,
+        gender,
+        bmi_group,
+        physact_before,
+        income_before,
+        smoke_before,
+        contra_current_groupall,
+        cyclelength_before_group,
+        period_lengh_before_group,
+        heavyperiod_before,
+        cycle_irreg_before,
+        nbdeliveries,
+        vaccine_type,
+        vaccine_timing,
+        covid_group,
+        covid_tested,
+        vaccinated,
+        changesmenses_num,
+        lifesatchanges,
+        disease_before_endometriosis_num,
+        disease_before_pcos_num,
+        disease_before_underthyroid_num,
+        disease_before_overthyroid_num,
+        disease_before_uterpolyp_num,
+        disease_before_uterfibroid_num,
+        disease_before_intercystitis_num,
+        disease_before_eatingdisord_num,
+        liveuk,
+        edu_group
+   
+    )
+)
+
+
+
+
+### Univariable ------------------------------------------------------------
+
+
+
+## model function
+models <- function(x) {
+    lapply(multfin, function(y)
+        glm(as.formula(
+            paste0(
+                "vaccine_changescycle_binary ~  ",
+                x
+                
+            )
+        ), data = y, model=TRUE, family=binomial(link = "log"))
+    )
+}
+
+## run logistic models
+models_univariate <- as.list(seq(1,length(exposures))) # create list to store model results
+library(pbapply)
+models_univariate <- pblapply(exposures, models)
+
+
+
+### Pool -------------------------------------------------------------------
+
+pool_univariate <- as.list(seq(1,length(exposures))) # create list to store pool results
+
+# run pool
+for(j in seq_along(exposures)) {
+    pool_univariate[[j]] <- pool(models_univariate[[j]])
+}
+
+
+
+### p values under FDR---------------------------------------------------------------
+
+library(data.table)
+smry <-lapply(pool_univariate,
+             summary,
+              conf.int = TRUE,
+              conf.level = 0.99)
+all_models <- rbindlist(smry)
+
+
+
+# this is the FDR p values
+all_models$q.value <- p.adjust(all_models$p.value,method = "BH")
+
+
+
+## Table with adjusted p values--------------------------------------------------
+
+all_models2<-all_models%>% filter (term!="(Intercept)")# to remove the intercept from the output
+row<- which(all_models2$q.value<0.05) # to highlight in red those which are significant
+library(kableExtra)
+
+# change names
+names(all_models2)<-c("term","estimate","std.error","statistic","df","p.value","lowCI","highCI","q.value")
+
+# create the table
+table<-all_models2%>% filter (term!="(Intercept)")%>%
+  mutate(PR=exp(estimate))%>% 
+  mutate(PRConf.low=exp(lowCI))%>% 
+  mutate(PRConf.high=exp(highCI))%>% 
+  select(term,PR,PRConf.low,PRConf.high,statistic,df,p.value, q.value) %>%
+  kbl(caption = "Univariable models adjusted p-values") %>%
+  kable_paper(bootstrap_options = "striped", full_width = F)%>%
+  row_spec(row=c(row), bold = T, color = "white", background = "#D7261E")%>%
+  pack_rows("Age", 1,1) %>%
+  pack_rows("Ethnic Group", 2,2) %>%
+    pack_rows("Medication Use", 3,3) %>%
+      pack_rows("Vitamins Use", 4,4) %>%
+  pack_rows("Marital status", 5, 6) %>%
+  pack_rows("Gender", 7,7) %>%
+  pack_rows("BMI", 8, 10) %>%
+   pack_rows("Physical activity", 11, 14) %>%
+  pack_rows("Income", 15, 19) %>%
+    pack_rows("Smoking", 20, 21) %>%
+    pack_rows("Contraception", 22, 26) %>%
+    pack_rows("Cycle length", 27, 29) %>%
+     pack_rows("Period length", 30, 35) %>%
+  pack_rows("Heavy Bleeding", 36,36) %>%
+  pack_rows("Irregular cycles", 37, 39) %>%
+   pack_rows("Nb deliveries", 40, 42) %>%
+     pack_rows("Vaccine type", 43,43) %>%
+   pack_rows("Vaccine timing", 44, 46) %>%
+    pack_rows("COVID group", 47,48) %>%
+      pack_rows("COVID tested", 49, 50) %>%
+        pack_rows("Nb shots", 51, 51) %>%
+    pack_rows("Changes in menstrual cycles over the last year", 52,52) %>%
+      pack_rows("Life satisfaction changes", 53, 53) %>%
+   pack_rows("Endometriosis", 54, 54) %>%
+   pack_rows("PCOS", 55, 55) %>%
+   pack_rows("Underactive Thyroid", 56, 56) %>%
+   pack_rows("Overactive Thyroid", 57, 57) %>%
+   pack_rows("Uterine Polyps", 58, 58) %>%
+   pack_rows("Uterine Fibroids", 59, 59) %>%
+   pack_rows("Inter cystitis", 60, 60) %>%
+   pack_rows("Eating disorders", 61, 61) %>%
+  pack_rows("Country of residence", 62, 64) %>%
+  pack_rows("Education",65,67)%>%
+  kable_styling(full_width = T)
+
+# save
+#library(kableExtra)
+
+table
+
+#table%>%
+#   save_kable("TableSI_univariable.html")
+
+# print
+
+#library(reporter)
+#library(kableExtra)
+#tbl <- create_table(all_models2) %>% 
+#  titles("Univariable models adjusted p-values")
+#rpt <- create_report("TableSI_univariable.pdf", font_size=  8, output_type = "PDF") %>% 
+#  add_content(tbl)
+#write_report(rpt)
+  
+```
+
+
+### Plot PR and 99%CI univariable
+```{r plotuniv, fig.show='asis',fig.width = 10, fig.height= 15}
+
+#p_load("remotes")
+#remotes::install_github("brooke-watson/bplots")
+#p_load("bplots")
+
+#all_models2$term
+x <- data.frame(
+    symptoms=c(rep("Age", 1), 
+             rep("Ethnicity: Other", 1),
+             rep("Medication Use: Yes", 1),
+             rep("Vitamins Use: Yes", 1),
+             rep("Marital status: Widowed/Separated", 1),
+             rep("Marital status: Never-married/Partnered ", 1),
+             rep("Gender: Other", 1) ,
+             rep("BMI: Obese", 1) ,
+             rep("BMI: Overweight", 1) ,
+             rep("BMI: Underweight", 1) ,
+             rep("Physical activity pre-pand: 60-90 minutes", 1) ,
+             rep("Physical activity pre-pand: 90-120 minutes", 1) ,
+             rep("Physical activity pre-pand: <30 minutes", 1) ,
+             rep("Physical activity pre-pand: >120 minutes", 1) ,
+             rep("Income: £13,682 to £22,140 ", 1) ,
+             rep("Income: £22,140 to £29,254 ", 1) ,
+             rep("Income: £39,397 to £76,144", 1) ,
+             rep("Income: <£13,682", 1) ,
+             rep("Income: >£76,144", 1) ,
+             rep("Smoking: Past smoker", 1) ,
+             rep("Smoking: Current smoker**", 1) ,
+             rep("Contraception: Combined***", 1) ,
+             rep("Contraception: Copper IUD", 1) ,
+             rep("Contraception: Other", 1) ,
+             rep("Contraception: Progestogen", 1) ,
+             rep("Contraception: Sterilization", 1) ,
+             rep("Cycle length pre-pand: Short cycles", 1) ,
+             rep("Cycle length pre-pand: Long cycles", 1) ,
+             rep("Cycle length pre-pand: Irregular", 1) ,
+             rep("Period length pre-pand: <4 days", 1),
+             rep("Period length pre-pand: 4 days", 1),
+             rep("Period length pre-pand: 6 days", 1),
+             rep("Period length pre-pand: 7 days", 1),
+             rep("Period length pre-pand: >7 days", 1),
+             rep("Period length pre-pand: Irregular", 1),
+             rep("Heavy Bleeding pre-pand", 1),
+             rep("Irregular cycles pre-pand: 2-5 days", 1) ,
+             rep("Irregular cycles pre-pand: >5 days", 1) ,
+             rep("Irregular cycles pre-pand: No periods", 1) ,
+             rep("Nb deliveries :1", 1),
+             rep("Nb deliveries: 2", 1),
+             rep("Nb deliveries: 3+", 1),
+             rep("Vaccine type: Pfizer-BioNTech",1),
+             rep("Vaccine timing: Feb 21", 1) ,
+             rep("Vaccine timing: Jan 21", 1) ,
+             rep("Vaccine timing: March 21", 1) ,
+             rep("COVID type: Long COVID ***", 1) ,
+             rep("COVID type: Acute COVID ***", 1) ,
+             rep("COVID diagnosis: Self-diagnosed +***", 1) ,
+             rep("COVID diagnosis: Tested  +**", 1) ,
+             rep("Nb vaccine shots: 2 ",  1) ,
+             rep("Changes in menstrual cycles over the last year***", 1),
+             rep("Life satisfaction changes", 1) ,
+             rep("Endometriosis", 1),
+             rep("PCOS", 1),
+             rep("Underactive Thyroid", 1),
+             rep("Overactive Thyroid", 1) ,
+             rep("Uterine Polyps", 1),
+             rep("Uterine Fibroids", 1),
+             rep("Interstitial cystitis", 1) ,
+             rep("Eating disorders", 1),
+             rep("Country of residence: Northern Ireland", 1) ,
+             rep("Country of residence: Scotland", 1) ,
+             rep("Country of residence: Wales", 1) ,
+             rep("Education: Secondary/Higher",1),
+              rep("Education: Primary/Secondary",1),
+              rep("Education: University",1)) ,
+    PR=c(exp(all_models2$estimate)),
+    Lower=c(exp(all_models2$lowCI)),
+    Upper=c(exp(all_models2$highCI)),
+    Variables=c(rep("Age", 1), 
+             rep("Ethnicity", 1),
+            rep("Medication Use", 1),
+            rep("Vitamins Use", 1),
+            rep("Marital status", 2),
+  rep("Gender", 1) ,
+  rep("BMI", 3) ,
+   rep("Physical activity pre-pand", 4) ,
+  rep("Income", 5) ,
+    rep("Smoking", 2) ,
+    rep("Contraception", 5) ,
+    rep("Cycle length pre-pand", 3) ,
+     rep("Period length pre-pand", 6),
+  rep("Heavy Bleeding pre-pand", 1),
+  rep("Irregular cycles pre-pand", 3) ,
+   rep("Nb deliveries", 3),
+     rep("Vaccine type",1),
+   rep("Vaccine timing", 3) ,
+    rep("COVID type", 2) ,
+      rep("COVID diagnosis", 2) ,
+        rep("Nb vaccine shots",  1) ,
+    rep("Changes in menstrual cycles over the last year", 1),
+      rep("Life satisfaction changes", 1) ,
+   rep("Endometriosis", 1),
+   rep("PCOS", 1),
+   rep("Underactive Thyroid", 1),
+   rep("Overactive Thyroid", 1) ,
+   rep("Uterine Polyps", 1),
+   rep("Uterine Fibroids", 1),
+   rep("Interstitial cystitis", 1) ,
+   rep("Eating disorders", 1),
+  rep("Country of residence", 3) ,
+  rep("Education",3))
+)           
+                        
+                        
+
+
+# Set colours
+library(RColorBrewer)
+# Define the number of colors you want
+p_load(randomcoloR)
+set.seed(782)
+nb.cols <- 33
+mycolors <- c(distinctColorPalette(k = nb.cols, altCol = FALSE, runTsne = FALSE))
+
+
+
+
+x<-x%>%
+  mutate(group=case_when(
+                           
+                  Variables=="Age" ~1,
+                  Variables=="Ethnicity" ~2,
+                  Variables=="Medication Use" ~3,
+                  Variables=="Vitamins Use" ~4,
+                  Variables=="Marital status" ~5,
+                  Variables=="Gender" ~6,
+                  Variables=="BMI" ~7,
+                  Variables=="Physical activity pre-pand" ~8,
+                  Variables=="Income" ~9,
+                  Variables=="Smoking" ~10,
+                  Variables=="Contraception" ~11,
+                  Variables=="Cycle length pre-pand" ~12,
+                  Variables=="Period length pre-pand" ~13,
+                  Variables=="Heavy Bleeding pre-pand" ~14,
+                  Variables=="Irregular cycles pre-pand" ~15,
+                  Variables=="Nb deliveries" ~16,
+                  Variables=="Vaccine type" ~17,
+                  Variables=="Vaccine timing" ~18,
+                  Variables=="COVID type" ~19,
+                  Variables=="COVID diagnosis" ~20,
+                  Variables=="Nb vaccine shots" ~21,
+                  Variables=="Changes in menstrual cycles over the last year" ~22,
+                  Variables=="Life satisfaction changes" ~23,
+                  Variables=="Endometriosis" ~24,
+                  Variables=="PCOS" ~25,
+                      Variables=="Underactive Thyroid" ~26,
+                      Variables=="Overactive Thyroid" ~27,
+                      Variables=="Uterine Polyps" ~28,
+                      Variables=="Uterine Fibroids" ~29,
+                      Variables=="Interstitial cystitis" ~30,
+                      Variables=="Eating disorders" ~31,
+                      Variables=="Country of residence" ~32,
+                      Variables=="Education" ~33
+                           
+                           ))
+
+x$group<-as.factor(x$group)
+x$Variables<-as.factor(x$Variables)
+
+# must use font Avenir for iScience
+# First download the .ttf file into windows/mac
+##
+#install.packages("devtools")
+#require(devtools)
+#install_github("Rttf2pt1", "wch")
+#library(extrafont)
+#extrafont::font_import()
+
+#font_import(paths = "C:/Users/Dell/AppData/Local/Microsoft/Windows/Fonts")
+
+# Plot
+plot<-x %>% 
+  ggplot(aes(x = PR, y=Variables)) + 
+  labs(y = "")+
+# geom_rect(aes(xmin = 0, 
+#               xmax = 5,
+#               ymin = -Inf, 
+#               ymax = Inf),
+#fill = "white")+
+  geom_errorbarh(aes(xmin = Lower, xmax = Upper)) +
+  geom_point(aes(colour = Variables, shape = Variables), size = 5 ) +
+  geom_vline(aes(xintercept = 1), linetype = 2, col="red") +
+  scale_shape_manual(values = rep(15, 67)) +
+ # scale_fill_manual(values = mycolors) +
+  scale_color_manual(values= mycolors)+
+
+  scale_x_log10() +
+  coord_cartesian(xlim = c(0.1, 4)) +
+  facet_grid(symptoms~., switch = "y",scales = "free_y") +
+ # theme_avenir()+
+  theme_bw() +
+ # theme(legend.position = "none")+
+  theme(panel.spacing.y = unit(2, "points"),
+        panel.border = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.length.y = unit(1, "points"),
+        strip.text.y.left = element_text(angle = 0),
+        strip.background.y = element_blank(),
+        strip.placement = "outside",
+        axis.line = element_line()
+      
+        )+ theme(text = element_text(size = 12))    
+
+
+     
+# control the legend
+plot+guides(shape=FALSE, size=FALSE, fill=FALSE,colour=guide_legend(ncol=1))
+
+# save the plot
+ggsave(filename="Figure2.jpeg", width = 30,  height = 40, units = "cm",dpi = 300)
+
+# save the plot
+ggsave(filename="Figure2.pdf", width = 30,  height = 30, units = "cm",dpi = 300)
+```
+
+We found that smoking behaviour (current smoker), contraceptive type, COVID-19 history and cycle changes over the last year are associated with the odds of reporting menstrual cycles changes.
+
+
+## Multivariable analyses
+#### Models and output tables
+We take each exposure significant in the univariable models at q.value (e.g., FDR adjusted p.value) < 0.05 (Smoking, COVID history and menstrual cycle changes over the last year). Based on DAGS, only COVID status and menstrual cycle changes should be adjusted for confounders.
+
+
+#### COVID status as exposure
+
+True confounders are smoking and type of contraception
+
+```{r logistic_covid1, results='asis'}
+
+# set global R options
+pboptions(type = "timer", char = "=") # initialize progress bar
+
+### Exposures -------------------------------------------------------------------
+
+# set list of exposures to test
+exposures <- c(
+    Cs(
+     covid_group,
+     covid_tested
+
+    )
+)
+
+
+ #model function - multivariate
+
+models <- function(x) {
+    lapply(multfin, function(y)
+        glm(as.formula(
+            paste0(
+                "vaccine_changescycle_binary ~ smoke_before+contra_current_groupall+",
+                x
+                
+            )
+        ), data = y, model = TRUE,family=binomial(link = "log"))
+    )
+}
+
+
+## run  models
+models_test <- as.list(seq(1,length(exposures))) # create list to store model results
+models_test <- pblapply(exposures, models)
+
+
+
+### Pool -------------------------------------------------------------------
+pool_tests <- as.list(seq(1,length(exposures))) # create list to store pool results
+
+
+# run pool
+for(j in seq_along(exposures)) {
+    pool_tests[[j]] <- pool(models_test[[j]])
+}
+
+
+
+### p values under FDR-------------------------------------------------------------------
+
+library(data.table)
+smry1 <-lapply(pool_univariate,
+             summary,
+              conf.int = TRUE,
+            conf.level = 0.95)
+smry2 <-lapply(pool_tests,
+             summary,
+              conf.int = TRUE,
+            conf.level = 0.95)
+
+all_models <- rbindlist(c(smry1,smry2))
+
+
+
+
+
+# this is the FDR p values
+all_models$q.value <- p.adjust(all_models$p.value,method = "BH")
+
+
+
+## Table with adjusted p values - covid tested  -------------------------------------------------------------------
+
+library(kableExtra)
+
+
+# subsetting the last model
+all_models2<-all_models%>% 
+filter(row_number() >= (n() - 9)) %>%
+filter (term!="(Intercept)")# to remove the intercept from the output
+
+# have significant results in red
+row<- which(all_models2$q.value<0.05) # to highlight in red those which are significant
+
+# change names
+names(all_models2)<-c("term","estimate","std.error","statistic","df","p.value","lowCI","highCI","q.value")
+
+# create the table
+# change row names
+
+all_models2$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only","Sterilized","Self diagnosed +","Tested +")
+
+# change column names
+table<-all_models2%>% filter (term!="(Intercept)")%>%
+  mutate(PR=exp(estimate))%>% 
+  mutate(PRConf.low=exp(lowCI))%>% 
+  mutate(PRConf.high=exp(highCI))%>% 
+  select(term,PR,PRConf.low,PRConf.high,statistic,df,p.value, q.value) %>%
+  kbl(caption = "Multivariable model adjusted p-values",
+      col.names = c("Variable",
+                    "PR",
+                    "95CI_Lower",
+                    "95CI_Higher",
+                    "Statistic",
+                    "Df",
+                    "P value",
+                    "Q value")) %>%
+  kable_paper(bootstrap_options = "striped", full_width = F
+              )%>%
+  row_spec(row=c(row), bold = T, color = "white", background = "#D7261E")%>%
+  pack_rows("Smoking", 1,2) %>%
+    pack_rows("Contraception", 3,7) %>%
+  pack_rows("Covid Status", 8, 9) %>%
+  kable_styling(full_width = T)
+
+
+table%>%
+   save_kable("TableSI_multivariable_COVID_tested.html")
+  
+table
+
+
+
+
+## Table with adjusted p values - long covid -------------------------------------------------------------------
+
+library(kableExtra)
+# subsetting the model we want
+all_models3<-all_models%>% 
+filter(row_number() <= 110, row_number() >= 101) %>%
+filter (term!="(Intercept)")# to remove the intercept from the output
+
+# have significant results in red
+row<- which(all_models3$q.value<0.05) # to highlight in red those which are significant
+
+# change names
+names(all_models3)<-c("term","estimate","std.error","statistic","df","p.value","lowCI","highCI","q.value")
+
+# create the table
+# change row names
+
+all_models3$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only","Sterilized","Long Covid","Acute Covid")
+
+# change column names
+table<-all_models3%>% filter (term!="(Intercept)")%>%
+  mutate(PR=exp(estimate))%>% 
+  mutate(PRConf.low=exp(lowCI))%>% 
+  mutate(PRConf.high=exp(highCI))%>% 
+  select(term,PR,PRConf.low,PRConf.high,statistic,df,p.value, q.value) %>%
+  kbl(caption = "Multivariable model adjusted p-values",
+      col.names = c("Variable",
+                    "PR",
+                    "95CI_Lower",
+                    "95CI_Higher",
+                    "Statistic",
+                    "Df",
+                    "P value",
+                    "Q value")) %>%
+  kable_paper(bootstrap_options = "striped", full_width = F
+              )%>%
+  row_spec(row=c(row), bold = T, color = "white", background = "#D7261E")%>%
+  pack_rows("Smoking", 1,2) %>%
+    pack_rows("Contraception", 3,7) %>%
+  pack_rows("Covid Status", 8, 9) %>%
+  kable_styling(full_width = T)
+
+
+table%>%
+   save_kable("TableSI_multivariable_COVID_type.html")
+
+table
+```
+
+
+
+#### Menstrual cycle changes over the last year as exposure
+
+```{r logistic_multivariate_ms, results='asis'}
+# set global R options
+pboptions(type = "timer", char = "=") # initialize progress bar
+
+### Exposures -------------------------------------------------------------------
+
+# set list of exposures to test
+exposures <- c(
+    Cs(
+     covid_group,
+     covid_tested
+
+    )
+)
+
+
+ #model function - multivariate
+
+models <- function(x) {
+    lapply(multfin, function(y)
+        glm(as.formula(
+            paste0(
+                "vaccine_changescycle_binary ~ smoke_before+contra_current_groupall+changesmenses_num+",
+                x
+                
+            )
+        ), data = y, model = TRUE,family=binomial(link = "log"))
+    )
+}
+
+
+## run  models
+models_test <- as.list(seq(1,length(exposures))) # create list to store model results
+models_test <- pblapply(exposures, models)
+
+
+
+### Pool -------------------------------------------------------------------
+pool_tests <- as.list(seq(1,length(exposures))) # create list to store pool results
+
+
+# run pool
+for(j in seq_along(exposures)) {
+    pool_tests[[j]] <- pool(models_test[[j]])
+}
+
+
+
+### p values under FDR-------------------------------------------------------------------
+
+library(data.table)
+smry1 <-lapply(pool_univariate,
+             summary,
+              conf.int = TRUE,
+            conf.level = 0.95)
+smry2 <-lapply(pool_tests,
+             summary,
+              conf.int = TRUE,
+            conf.level = 0.95)
+
+all_models <- rbindlist(c(smry1,smry2))
+
+
+
+
+
+# this is the FDR p values
+all_models$q.value <- p.adjust(all_models$p.value,method = "BH")
+
+
+
+## Table with adjusted p values - covid tested  -------------------------------------------------------------------
+
+library(kableExtra)
+
+
+# subsetting the last model
+all_models2<-all_models%>% 
+filter(row_number() >= (n() - 10)) %>%
+filter (term!="(Intercept)")# to remove the intercept from the output
+
+# have significant results in red
+row<- which(all_models2$q.value<0.05) # to highlight in red those which are significant
+
+# change names
+names(all_models2)<-c("term","estimate","std.error","statistic","df","p.value","lowCI","highCI","q.value")
+
+# create the table
+# change row names
+
+all_models2$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only", "Sterilized","Prior changes in menstrual cycles","Self diagnosed +","Tested +")
+
+# change column names
+table<-all_models2%>% filter (term!="(Intercept)")%>%
+  mutate(PR=exp(estimate))%>% 
+  mutate(PRConf.low=exp(lowCI))%>% 
+  mutate(PRConf.high=exp(highCI))%>% 
+  select(term,PR,PRConf.low,PRConf.high,statistic,df,p.value, q.value) %>%
+  kbl(caption = "Multivariable model adjusted p-values",
+      col.names = c("Variable",
+                    "PR",
+                    "95CI_Lower",
+                    "95CI_Higher",
+                    "Statistic",
+                    "Df",
+                    "P value",
+                    "Q value")) %>%
+  kable_paper(bootstrap_options = "striped", full_width = F
+              )%>%
+  row_spec(row=c(row), bold = T, color = "white", background = "#D7261E")%>%
+  pack_rows("Smoking", 1,2) %>%
+    pack_rows("Contraception", 3,7) %>%
+      pack_rows("Prior changes in menses", 8,8) %>%
+  pack_rows("Covid Status", 9, 10) %>%
+  kable_styling(full_width = T)
+
+
+table%>%
+   save_kable("TableSI_multivariable_menstruation.html")
+
+table
+
+## Table with adjusted p values - long covid -------------------------------------------------------------------
+
+library(kableExtra)
+# subsetting the model we want
+all_models3<-all_models%>% 
+filter(row_number() <= 111, row_number() >= 101) %>%
+filter (term!="(Intercept)")# to remove the intercept from the output
+
+# have significant results in red
+row<- which(all_models3$q.value<0.05) # to highlight in red those which are significant
+
+# change names
+names(all_models3)<-c("term","estimate","std.error","statistic","df","p.value","lowCI","highCI","q.value")
+
+# create the table
+# change row names
+
+all_models3$term <- c("Past smoker","Current smoker","Combined","Copper IUD","Other","Progestin only", "Sterilization", "Prior changes in menstrual cycles","COVID + long","COVID + short")
+
+# change column names
+table<-all_models3%>% filter (term!="(Intercept)")%>%
+  mutate(PR=exp(estimate))%>% 
+  mutate(PRConf.low=exp(lowCI))%>% 
+  mutate(PRConf.high=exp(highCI))%>% 
+  select(term,PR,PRConf.low,PRConf.high,statistic,df,p.value, q.value) %>%
+  kbl(caption = "Multivariable model adjusted p-values",
+      col.names = c("Variable",
+                    "PR",
+                    "95CI_Lower",
+                    "95CI_Higher",
+                    "Statistic",
+                    "Df",
+                    "P value",
+                    "Q value")) %>%
+  kable_paper(bootstrap_options = "striped", full_width = F
+              )%>%
+  row_spec(row=c(row), bold = T, color = "white", background = "#D7261E")%>%
+  pack_rows("Smoking", 1,2) %>%
+    pack_rows("Contraception", 3,7) %>%
+      pack_rows("Prior changes in menses", 8,8) %>%
+  pack_rows("Covid Status", 9, 10) %>%
+  kable_styling(full_width = T)
+
+
+table%>%
+   save_kable("TableSI8_multivariable_Menstrualchanges_acute_long.html")
+
+table
+```
+
+
+# 4. Plot models
+#### Plot PR
+```{r plot_PR, fig.show='asis',fig.height=10}
+# Rename levels
+levels(multfin[[1]]$covid_group)[1]<- "No Covid"
+levels(multfin[[1]]$covid_group)[2]<- "Long Covid"
+levels(multfin[[1]]$covid_group)[3]<- "Acute Covid"
+
+levels(multfin[[1]]$contra_current_groupall)[5]<- "Progestin"
+levels(multfin[[1]]$contra_current_groupall)[3]<- "IUD"
+
+# Models
+
+# Model I
+modelsmoking<-glm(vaccine_changescycle_binary ~    smoke_before, data = multfin[[1]], family=binomial, model = TRUE)
+#
+modelchangemense<-glm(vaccine_changescycle_binary ~     smoke_before+contra_current_groupall+covid_tested+changesmenses_num, data = multfin[[1]], family=binomial, model = TRUE)
+# Model II
+modelchangemensegroup<-glm(vaccine_changescycle_binary ~     smoke_before+contra_current_groupall+covid_group+changesmenses_num, data = multfin[[1]], family=binomial, model = TRUE)
+# Model III
+modeltested<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+covid_tested, data = multfin[[1]], family=binomial, model = TRUE)
+# Model IV
+modelgroup<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+covid_group, data = multfin[[1]], family=binomial, model = TRUE)
+# Model V
+modelcontra<-glm(vaccine_changescycle_binary ~    contra_current_groupall, data = multfin[[1]], family=binomial, model = TRUE)
+
+
+# List of models
+
+models <- list( "Model I" = modelsmoking, "Model II" = modelcontra,"Model III" = modeltested, "Model IV" = modelgroup, "Model V" = modelchangemense ,"Model VI" = modelchangemensegroup)
+
+
+# Plot compare models
+
+plot_PR<-ggcoef_compare(models, 
+                    type = c("faceted"),
+                    conf.level = 0.99,
+                    exponentiate = TRUE,
+                    add_reference_rows = TRUE,
+                    variable_labels = c(
+                    smoke_before="Smoking behaviour",
+                    contra_current_groupall= "Contraceptive use",
+                    covid_tested= "COVID-19 diagnosis",
+                    covid_group= "COVID-19 type",
+                    changesmenses_num= "PRMC"))+ theme(text = element_text(size = 18))    
+
+
+plot_PR                 # All font sizes
+# Save plot
+
+#ggsave(filename="Figure3.jpeg", width = 30,  height = 20, units = "cm", dpi=300)
+
+#
+library(sjPlot)
+
+
+plot_models(
+  modelsmoking, modelcontra, modeltested,modelgroup,modelchangemense,modelchangemensegroup,
+  m.labels = c("Smoking", "Contraception", "COVID tested","COVID group","modelgroup","modelchangemense"),
+  vline.color = "grey70",
+  show.values = FALSE, show.p = TRUE, p.shape = TRUE
+
+)+theme_classic()
+```
+
+
+
+#### Plot predicted probability
+
+```{r proba, fig.show='asis'}
+# set up
+trellis.device()
+trellis.par.set(list(axis.text = list(font = 1, cex=1)))
+trellis.par.set(list(par.ylab.text = list(font = 1, cex=1))) 
+trellis.par.set(list(par.xlab.text = list(font = 1, cex=1))) 
+trellis.par.set(list(par.main.text = list(font = 1, cex=1))) 
+trellis.par.set(grid.pars = list(fontfamily = "serif"))
+
+
+## Plot effect of contraceptive use
+
+a<-plot(Effect("contra_current_groupall",modelcontra), 
+    lines = list(multiline = FALSE), 
+     lty=0,
+     lwd=6,
+     level=.99,
+     ylim=c(-3,-0.3),
+     lattice=list(strip=list(factor.names=FALSE)),
+     confint = list(style = "auto"),
+     response="",
+     xlab="Contraceptive type", 
+     ylab= "Predicted probability",
+     main="")
+
+## Plot effect covid_tested
+
+
+b<-plot(Effect("covid_tested",modeltested), 
+     lines = list(multiline = T), 
+     lty=0,
+     lwd=6,
+     level=.99,
+     ylim=c(-3,-0.3),
+     lattice=list(strip=list(factor.names=FALSE)),
+     confint = list(style = "auto"),
+     response="",
+     xlab="COVID Status", 
+     ylab= "Predicted probability",
+     main="")
+
+## Plot effect covid_group
+
+c<-plot(Effect("covid_group",modelgroup), 
+     lines = list(multiline = T), 
+     lty=0,
+     lwd=6,
+     level=.99,
+     ylim=c(-3,-0.3),
+     lattice=list(strip=list(factor.names=FALSE)),
+     confint = list(style = "auto"),
+     response="",
+     xlab="COVID Status", 
+     ylab= "Predicted probability",
+     main="")
+
+## Plot changes menses
+
+d<-plot(Effect("smoke_before",modelsmoking), 
+     lines = list(multiline = T), 
+     level=.99,
+     lty=0,
+     lwd=6,
+     ylim=c(-3,-0.3),
+     symbols=TRUE,
+     lattice=list(strip=list(factor.names=FALSE)),
+     confint = list(style = "auto"),
+     response="",
+     xlab="Smoking behaviour", 
+     ylab= "Predicted probability",
+     main="")
+
+
+# grid arrange
+
+plotpredictedvalues<-grid.arrange(a,b,c,d,ncol=2)
+plotpredictedvalues
+
+# save
+pdf(file='Figure3.pdf', width=12,height=8) # Open PDF device with specific file name
+grid.arrange(a,b,c,d,ncol=2)
+dev.off() # Turn the PDF device off
+
+grid.arrange(a,b,c,d,ncol=2)
+
+```
+
+
+
+
+
+# 5. Analysis on complete cases
+```{r summary tables, results='asis'}
+
+completerecords<-dataor %>% select(-c(toosoon)) %>% na.omit()
+dim(completerecords)
+
+# manipulation variables
+levels(completerecords$smoke_before)[3]<-"Current Smoker"
+levels(completerecords$smoke_before)[4]<-"Current Smoker"
+completerecords$contra_current_groupall<-as.factor(completerecords$contra_current_groupall)
+completerecords$contra_current_groupall<-relevel(completerecords$contra_current_groupall, ref = "None")
+
+
+## models--------------------------------------------------------
+model1<-glm(vaccine_changescycle_binary ~ smoke_before, data =completerecords, family=binomial, model = TRUE)
+
+## model 2----------------------------------------------------
+
+model2<-glm(vaccine_changescycle_binary ~ contra_current_groupall, data =completerecords, family=binomial, model = TRUE)
+
+## model 3----------------------------------------------------
+
+model3<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+covid_tested, data =completerecords, family=binomial, model = TRUE)
+
+## model 4----------------------------------------------------
+
+model4<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+covid_group, data =completerecords, family=binomial, model = TRUE)
+
+## model 5----------------------------------------------------
+
+model5<-glm(vaccine_changescycle_binary ~    smoke_before+contra_current_groupall+ changesmenses_num+covid_tested, data =completerecords, family=binomial, model = TRUE)
+
+## model 5----------------------------------------------------
+
+model6<-glm(vaccine_changescycle_binary ~   smoke_before+contra_current_groupall+ changesmenses_num+covid_group, data =completerecords, family=binomial, model = TRUE)
+
+
+### model summary
+
+library(modelsummary)
+
+# plot
+msuni<-modelsummary(list(model1,model2,model3,model4,model5,model6),
+                    coef_rename=c(
+                                 
+                                  "smoke_beforeNo, but I have smoked in the past"="Past smokers",
+                                  "smoke_beforeCurrent Smoker"="Current smokers",
+                                  "contra_current_groupallCopper IUD"="Copper IUD",
+                                  "contra_current_groupallCombined estrogen-progestin"="Combined",
+                                  "contra_current_groupallProgestin only"= "Progestin only",
+                                  "contra_current_groupallOther"= "Other contraceptives",
+                               "contra_current_groupallSterilization"= "Sterilization",
+                          
+                                   
+                                  "changesmenses_num"="Menstrual cycle changes over the last year",
+
+                                  "covid_testedSelf diagnosed +"= "COVID self-diagnosed positive",
+                                  "covid_testedTested  +"="COVID tested positive",
+                               
+                               "covid_groupCOVID + long"="Long Covid",
+                                "covid_groupCOVID + short"="Acute Covid"),
+                    
+              
+                    stars = c('*' = 0.05,'**' = 0.01,'***' = 0.001),
+                    exponentiate = TRUE,estimate = "{estimate}{stars} [{conf.low}, {conf.high}]", 
+                    statistic = NULL ,
+                    gof_omit = ".*",title = 'Risk factors for vaccine related changes in menstrual cycles using complete cases',
+                    coef_omit = "Intercept", 
+                    output = "kableExtra")  
+
+# save
+
+save_kable(msuni, file="TableSIcompletecases.html")
+msuni
+
+```
+
+
+
