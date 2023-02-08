@@ -1,0 +1,83 @@
+---
+title: "Flowchart"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Diagramme
+```{r diag, eval=TRUE,fig.show= 'asis'}
+install.packages("pacman", repos = "http://cran.us.r-project.org")
+require(pacman)
+p_load(DiagrammeR)
+p_load(DiagrammeRsvg)
+p_load(rsvg)
+# load extra fonts for AVENIR font 
+#library(remotes)
+# you must download the appropriate version for Rtools first https://cran.rstudio.com/bin/windows/Rtools/rtools42/rtools.html and restart R
+#remotes::install_version("Rttf2pt1", version = "1.3.8")
+#library(extrafont)
+#font_import()
+#loadfonts(device = "win")
+#fonts()
+
+#
+
+
+# create diagramme
+chart<-grViz("digraph flowchart {
+      # node definitions with substituted label text
+node [fontname = Arial, shape = rectangle, style=filled,color=lightgrey,fontsize = 14,  margin=0.3]        
+      tab1 [label = '@@1']
+      tab2 [label = '@@2']
+      tab3 [label = '@@3']
+      tab4 [label = '@@4']
+      tab5 [label = '@@5']
+      tab6 [label = '@@6']
+node [fontname = Arial, shape = rectangle, style=bold, fontsize = 14,  margin=0.3]        
+      m1 [label = 'n=18,171 not-vaccinated']
+      m2 [label = 'n=2,587 who did not have a period in the last 12 months']
+      m3 [label = 'n=537 post-menopausal or transitioning']
+      m4 [label = 'n=57 who did not live in the UK']
+      m5 [label = 'n=369 reporting it is too early to evaluate changes']
+
+      # creating horizontal lines
+      node [shape=none, width=0, height=0, label='']
+      {rank=same; tab1 -> m1}
+      {rank=same; tab2 -> m2}
+      {rank=same; tab3 -> m3}
+      {rank=same; tab4 -> m4}
+      {rank=same; tab5 -> m5}
+
+      # edge definitions with the node IDs
+     tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6;
+
+      }
+
+      [1]: 'Questionnaire filled by n=26,710 participants who gave consent'
+      [2]: 'Participants vaccinated n=8,539 '
+      [3]: 'Participants who had a period in the last 12 months  n=5,952'
+      [4]: 'Participants who are pre-menopausal n=5,415'
+      [5]: 'Participants living in the UK n=5,358'
+      [6]: 'Final sample n=4,989'
+
+      ")
+
+chart
+# save
+
+chart %>%
+    export_svg() %>%
+    charToRaw %>% 
+    rsvg_pdf("Figure1.pdf")
+
+
+
+```
+
+
